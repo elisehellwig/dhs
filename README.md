@@ -9,4 +9,4 @@ The slightly processed data is in
 Drive/DHS/data/processed
 
 The fully processed and aggregated data is in
-Drive/DHS/data/Processed <- change this 
+Drive/DHS/data/Processed <- rerun with a different folder
