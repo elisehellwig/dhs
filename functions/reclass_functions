@@ -81,8 +81,9 @@ write_reclass <- function(var_, path, varname="variable") {
 read_reclass <- function(var_, conv_varname, filename) { 
 	if (!is.factor(var_)) stop("covert var to factor first")
 	r <- read.csv(filename, sep=",", header=TRUE, stringsAsFactors=FALSE, encoding="UTF8")
-	r <- r[order("varnum"),]
-
+	#print(var_["varnum"])
+	#r <- r[order("varnum"),]
+	#print(r)
 	return(r[,conv_varname][as.numeric(var_)])
 }
 
