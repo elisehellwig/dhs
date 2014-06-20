@@ -75,8 +75,22 @@ for (v in percvars) { #EH 2014/4/18 prepares percentile data
 	x[which(x[ ,v] == 99.99), v] <- NA
 }
 
-#mapfile for recoding
+#load mapfile for recoding
 mapfile <- read.csv('projects/erica/mapfile/standard_dhs_map.csv')
+#converting to UTF-8 encoding
+x$v113<- iconv(x$v113, '', 'UTF-8')
+x$v116<- iconv(x$v116, '', 'UTF-8')
+x$v119<- iconv(x$v119, '', 'UTF-8')
+x$v127<- iconv(x$v127, '', 'UTF-8')
+x$v149<- iconv(x$v149, '', 'UTF-8')
+x$h11<- iconv(x$h11, '', 'UTF-8')
+
+#recoding with major categories
+x <- recode_var(x, mapfile, c('v113','v116', 'v127'), major=TRUE)
+
+#recoding with minor categories
+x <- recode_var(x, mapfile, c('v119','v149', 'h11'), major=FALSE)
+
 
 #sex of individual
 x$b4 <- tolower(x$b4)
@@ -95,7 +109,7 @@ x$v102[x$v102=='2,500 - 19,999' | x$v102=='menos de 2,500'] <-'rural'
 x$v113<- iconv(x$v113, '', 'UTF-8')
 x<-recode_var(x, mapfile, 'v113', major=TRUE)
 x$v113 <- as.factor(x$v113)
-write_reclass(x$v113, "projects/elise/reclass/v113.csv")
+#write_reclass(x$v113, "projects/elise/reclass/v113.csv")
 
 
 #Time to drinking water
@@ -108,17 +122,22 @@ x$v115[x$v115>900] <- NA
 x$v116<- iconv(x$v116, '', 'UTF-8')
 x<-recode_var(x, mapfile, 'v116', major=TRUE)
 x$v116 <- as.factor(x$v116)
-write_reclass(x$v116, "projects/elise/reclass/v116.csv")
+#write_reclass(x$v116, "projects/elise/reclass/v116.csv")
 
 
 #Has electricity
-x$v119 <- reclassexp(x$v119, "projects/elise/reclass/electricv119.csv", rewrite=FALSE)
-x$v119 <- reclassimp(x$v119, "projects/elise/reclass/electricv119.csv", 'mresp', convert.na=TRUE)
+x$v119<- iconv(x$v119, '', 'UTF-8')
+x<-recode_var(x, mapfile, 'v119')
+x$v119 <- as.factor(x$v119)
+#write_reclass(x$v119, "projects/elise/reclass/v119.csv")
+x$v119 <- read_reclass(x$v119,'response',"projects/elise/reclass/v119.csv")
 
 #Floor Material
-x$v127 <- reclassexp(x$v127, "projects/elise/reclass/floorv127.csv", rewrite=FALSE)
-x$v127 <- reclassimp(x$v127, "projects/elise/reclass/floorv127.csv", 'mresp', convert.na=TRUE)
-
+x$v127<- iconv(x$v127, '', 'UTF-8')
+x<-recode_var(x, mapfile, 'v127', major=TRUE)
+x$v127 <- as.factor(x$v127)
+#write_reclass(x$v127, "projects/elise/reclass/v127.csv")
+x$v127 <- read_reclass(x$v127,'response',"projects/elise/reclass/v127.csv")
 
 #Highest level of education
 x$v149 <- reclassexp(x$v149, "projects/elise/reclass/highestedv149.csv", rewrite=FALSE)
