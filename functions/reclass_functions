@@ -9,34 +9,39 @@ recode_var <- function(dtf, map, varname, major=FALSE){
 	registerDoParallel()
 		fn <- function(x, map1=map, varname1=v1, major2=major){
 			for (v in varname){
-				print(0)
-				
+
+				#gets a subset of the map file
 				submap1 <- map1[which(map1$DHScode == x$DHScode[1] & tolower(map1$name) == v & map1$year == as.integer(x$year[1]) & map1$recode == x$recode[1]),]
-					print(1)
+				print(head(x[,v]))
 				if (nrow(submap1) != 0){
+					
 					#strip spaces and make lowercase
 					x[,v] <- tolower(as.character(x[,v]))
+					
 					x[,v] <- gsub("[[:space:]]+","",x[,v])
-					print(2)
+					
 					#return major and minor category					
 					code <- match(x[,v],submap1$code)
+					#print(x[,v])
 					code <- ifelse(is.na(code), match(x[,v],gsub("[[:space:]]+","",submap1$value)), code)
 					minor <- ifelse(is.na(code), x[,v], submap1$value[code])
 					if (major2){
 						majnum <- round(as.numeric(submap1$code[code]), -1)
+						#print(majnum)
 						major <-  submap1$value[match(majnum,submap1$code)]
 						x[,v] <- paste0(major,' ~ ',minor)
 					}else{
-					print(3)
+					
 						x[,v] <- paste0(minor)
 					
 					}
 					
 				}
 			}
+			
 			return(x)
 		}
-		
+
 		return(ddply(dtf, .(DHScode, recode, year), .fun=fn, .parallel=F))
 }
 
