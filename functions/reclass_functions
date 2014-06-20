@@ -1,6 +1,6 @@
 #
 # 4/27/14: recode_var: feed it a DHS dataframe, the main map file (standard_dhs_map.csv), and the variable name, and it will recode the variables for you
-#
+#need to convert encoding to UTF-8 before running
 
 recode_var <- function(dtf, map, varname, major=FALSE){
 	require(plyr)
@@ -12,23 +12,45 @@ recode_var <- function(dtf, map, varname, major=FALSE){
 
 				#gets a subset of the map file
 				submap1 <- map1[which(map1$DHScode == x$DHScode[1] & tolower(map1$name) == v & map1$year == as.integer(x$year[1]) & map1$recode == x$recode[1]),]
-				print(head(x[,v]))
+				#print(head(submap1$code))
+				submap1$code2 <- as.numeric(as.character(submap1$code))
+				submap1$value2 <- as.character(submap1$value)
+
+
 				if (nrow(submap1) != 0){
 					
 					#strip spaces and make lowercase
 					x[,v] <- tolower(as.character(x[,v]))
 					
 					x[,v] <- gsub("[[:space:]]+","",x[,v])
-					
+					#print(head(x[,v]))
 					#return major and minor category					
 					code <- match(x[,v],submap1$code)
-					#print(x[,v])
+					
+					#print(head(code))
+					
 					code <- ifelse(is.na(code), match(x[,v],gsub("[[:space:]]+","",submap1$value)), code)
-					minor <- ifelse(is.na(code), x[,v], submap1$value[code])
+					
+					#print(head(unique(code)))
+
+					minor <- ifelse(is.na(code), x[,v], submap1$value2[code])
+					
+					#print(head(unique(minor)))
+					#up til here is good 
+
 					if (major2){
-						majnum <- round(as.numeric(submap1$code[code]), -1)
-						#print(majnum)
-						major <-  submap1$value[match(majnum,submap1$code)]
+						majnum <- round(as.numeric(submap1$code2[code]), -1)
+						majnum[majnum==100] <-99
+
+						#print(head(unique(majnum)))
+						#good up to this point
+						#this is the problem line, match function returns all NAs
+						#I think it is because submap1$code is a factor and not numeric
+						major <-  submap1$value2[match(majnum,submap1$code2)]
+						
+						#print(head(unique(major)))
+						#print(unique(match(majnum,submap1$code)))
+
 						x[,v] <- paste0(major,' ~ ',minor)
 					}else{
 					
