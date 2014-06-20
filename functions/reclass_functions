@@ -35,8 +35,8 @@ recode_var <- function(dtf, map, varname, major=FALSE){
 
 					if (major2){
 						#rounnd's numbers to the nearest ten so you only get the major code
-						majnum <- round(as.numeric(submap1$code2[code]), -1)
-						majnum[majnum==100] <-99 #puts back all the 99s in becuase 100 is not a code number
+						majnum <- rounddown(as.numeric(submap1$code2[code]))
+						majnum[majnum==90] <-99 #puts back all the 99s in becuase 100 is not a code number
 
 						
 						#gets the values of the major codes
@@ -87,8 +87,12 @@ read_reclass <- function(var_, conv_varname, filename) {
 	return(r[,conv_varname][as.numeric(var_)])
 }
 
-
-
+rounddown <- function(numvec) {
+	require('sfsmisc')
+	nummat <- digitsBase(numvec, 10)
+	newvec<- numvec - nummat[length(nummat[,1]),]
+	return(newvec)
+}
 
 
 
