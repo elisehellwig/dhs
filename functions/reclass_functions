@@ -12,8 +12,9 @@ recode_var <- function(dtf, map, varname, major=FALSE){
 
 				#gets a subset of the map file
 				submap1 <- map1[which(map1$DHScode == x$DHScode[1] & tolower(map1$name) == v & map1$year == as.integer(x$year[1]) & map1$recode == x$recode[1]),]
-				#print(head(submap1$code))
+				#converts the codes to numbers from factors
 				submap1$code2 <- as.numeric(as.character(submap1$code))
+				#converts the values to characters from factors
 				submap1$value2 <- as.character(submap1$value)
 
 
@@ -23,38 +24,28 @@ recode_var <- function(dtf, map, varname, major=FALSE){
 					x[,v] <- tolower(as.character(x[,v]))
 					
 					x[,v] <- gsub("[[:space:]]+","",x[,v])
-					#print(head(x[,v]))
-					#return major and minor category					
+					
+					#gets the numbers for the variables					
 					code <- match(x[,v],submap1$code)
-					
-					#print(head(code))
-					
 					code <- ifelse(is.na(code), match(x[,v],gsub("[[:space:]]+","",submap1$value)), code)
 					
-					#print(head(unique(code)))
-
+					#gets the values for the minor codes
 					minor <- ifelse(is.na(code), x[,v], submap1$value2[code])
 					
-					#print(head(unique(minor)))
-					#up til here is good 
 
 					if (major2){
+						#rounnd's numbers to the nearest ten so you only get the major code
 						majnum <- round(as.numeric(submap1$code2[code]), -1)
-						majnum[majnum==100] <-99
+						majnum[majnum==100] <-99 #puts back all the 99s in becuase 100 is not a code number
 
-						#print(head(unique(majnum)))
-						#good up to this point
-						#this is the problem line, match function returns all NAs
-						#I think it is because submap1$code is a factor and not numeric
-						major <-  submap1$value2[match(majnum,submap1$code2)]
 						
-						#print(head(unique(major)))
-						#print(unique(match(majnum,submap1$code)))
+						#gets the values of the major codes
+						major <-  submap1$value2[match(majnum,submap1$code2)]
 
-						x[,v] <- paste0(major,' ~ ',minor)
+						x[,v] <- paste0(major,' ~ ',minor) #puts recodes the data with major and minor codes
 					}else{
 					
-						x[,v] <- paste0(minor)
+						x[,v] <- paste0(minor) #recodes the data with only minor codes
 					
 					}
 					
