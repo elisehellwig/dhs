@@ -1,8 +1,8 @@
 
 setwd("d:/gdrive/projects/DHS/")
-setwd("/Users/echellwig/Google Drive/DHS/") #Elise
+setwd("/Users/echellwig/Drive/DHS/") #Elise
 source("R/functions/general.R")
-source("/Users/echellwig/Google Drive/DHS/projects/erica/R/erica_all_dhs_functions.R")
+source("/Users/echellwig/Drive/DHS/projects/erica/R/erica_all_dhs_functions.R")
 
 
 #v001 = Cluster number
@@ -44,6 +44,12 @@ x <- V[ ,vrs]
 
 n <- sapply(x[, numvars], function(x) max (nchar(x)))
 
+#removing countries with year problems until they are sorted
+
+x <- x[x$DHScode!="AL",]
+x <- x[x$DHScode!="AM",]
+
+
 # turn strings into integers
 for (v in intvars) {
 	x[ ,v] <- as.integer(x[ ,v])
@@ -69,74 +75,69 @@ for (v in percvars) { #EH 2014/4/18 prepares percentile data
 	x[which(x[ ,v] == 99.99), v] <- NA
 }
 
+#mapfile for recoding
+mapfile <- read.csv('projects/erica/mapfile/standard_dhs_map.csv')
 
+#sex of individual
 x$b4 <- tolower(x$b4)
 x$b4[x$b4==1] <- 'male'
 x$b4[x$b4==2] <- 'female'
 
+#urban/rural
 x$v025 <- tolower(x$v025) #EH 2014/4/18
 
-#EH 2014/4/18 reclassifying obvious responses, and removing non-obvious ones (4216 out of 1492628)
+#Urban/Rural
 x$v102 <- tolower(x$v102)
-x$v102[x$v102=='areas metropolitanas'] <-'urban'
-x$v102[x$v102=='menos de 2,500'] <-'rural'
-x$v102[x$v102=='2,500 - 19,999' | x$v102=='20,000 y mas'] <- NA
+x$v102[x$v102=='areas metropolitanas'| x$v102=='20,000 y mas'] <-'urban'
+x$v102[x$v102=='2,500 - 19,999' | x$v102=='menos de 2,500'] <-'rural'
 
-
-#EH 2014/4/25
-x$v113 <- reclassexp(x$v113, "projects/elise/reclass/drinkingwaterv113.csv", rewrite=FALSE)
-x$v113 <- reclassimp(x$v113, "projects/elise/reclass/drinkingwaterv113.csv", 'mresp', convert.na=TRUE)
-
-x<-recode_var(x, '/Users/echellwig/Google Drive/DHS/projects/erica/mapfile', v113, major=TRUE)
-
+#Source of drinking water
+x$v113<- iconv(x$v113, '', 'UTF-8')
+x<-recode_var(x, mapfile, 'v113', major=TRUE)
 x$v113 <- as.factor(x$v113)
-write_reclass(x$v113, "projects/elise/reclass/drinkingwaterv113.csv")
+write_reclass(x$v113, "projects/elise/reclass/v113.csv")
 
 
-
-
-#EH 2014/4/25 I can't figure out what some of the numbers above 900 mean, but they are not in the range of accepted values so I changed them to NA
+#Time to drinking water
 x$v115[x$v115==996] <- 0
 x$v115[x$v115==997] <- NA
 x$v115[x$v115==998] <- 'do not know'
 x$v115[x$v115>900] <- NA
 
-#EH 2014/4/25
-x$v116 <- reclassexp(x$v116, "projects/elise/reclass/toiletv116.csv", rewrite=FALSE)
-x$v116 <- reclassimp(x$v116, "projects/elise/reclass/toiletv116.csv", 'mresp', convert.na=TRUE)
-
-
+#Toilet facilities
+x$v116<- iconv(x$v116, '', 'UTF-8')
+x<-recode_var(x, mapfile, 'v116', major=TRUE)
 x$v116 <- as.factor(x$v116)
-write_reclass(x$v116, "projects/elise/reclass/toiletv116.csv")
+write_reclass(x$v116, "projects/elise/reclass/v116.csv")
 
 
-
-#EH 2014/4/25
+#Has electricity
 x$v119 <- reclassexp(x$v119, "projects/elise/reclass/electricv119.csv", rewrite=FALSE)
 x$v119 <- reclassimp(x$v119, "projects/elise/reclass/electricv119.csv", 'mresp', convert.na=TRUE)
 
-#EH 2014/4/26
+#Floor Material
 x$v127 <- reclassexp(x$v127, "projects/elise/reclass/floorv127.csv", rewrite=FALSE)
 x$v127 <- reclassimp(x$v127, "projects/elise/reclass/floorv127.csv", 'mresp', convert.na=TRUE)
 
 
-#EH 2014/4/25
+#Highest level of education
 x$v149 <- reclassexp(x$v149, "projects/elise/reclass/highestedv149.csv", rewrite=FALSE)
 x$v149 <- reclassimp(x$v149, "projects/elise/reclass/highestedv149.csv", 'mresp', convert.na=TRUE)
 
-#EH 2014/4/25
+#Children sleeping under mosquito net
 x$v459[x$v459==0] <- 'no'
 x$v459[x$v459==1] <- 'yes'
 x$v459[x$v459==9] <- NA
 
 
-#EH 2014/4/25
+#Had Diarrhea recently
 x$h11 <- reclassexp(x$h11, "projects/elise/reclass/diarrheah11.csv", rewrite=FALSE)
 x$h11 <- reclassimp(x$h11, "projects/elise/reclass/diarrheah11.csv", 'mresp', convert.na=TRUE)
 
-x$hw5 <- x$hw5 / 100
-x$hw11 <- x$hw11 / 100
-x$hw53 <- x$hw53 / 10
+#anthropometry percentiles
+x$hw4 <- x$hw4 / 100
+x$hw7 <- x$hw7 / 100
+x$hw10 <- x$hw10 / 100
 
 # remove bad data
 
@@ -144,6 +145,7 @@ x$hw53 <- x$hw53 / 10
 # hw53 can range between 1 and 40. 
 # There are 1842 records with a value > 50, 1796 are from IA-2005 (out of 51555)
 # I have removed these 
+#Iron levels
 x$hw53 <- x$hw53[x$hw53 > 40] <- NA
 
 cc <- ctryCodeTable()
