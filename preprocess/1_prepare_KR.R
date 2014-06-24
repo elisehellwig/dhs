@@ -110,6 +110,7 @@ x$v102[x$v102=='2,500 - 19,999' | x$v102=='menos de 2,500'] <-'rural'
 x$v113 <- as.factor(x$v113)
 #write_reclass(x2$v113, "projects/elise/reclass/v113.csv")
 x$v113 <- read_reclass(x$v113,'major',"projects/elise/reclass/v113.csv")
+x$v113 <- as.character(x$v113)
 
 
 #Time to drinking water
@@ -163,6 +164,10 @@ x$hw10 <- x$hw10 / 100
 # I have removed these 
 #Iron levels
 x$hw53 <- x$hw53[x$hw53 > 40] <- NA
+
+#removes recode variable since it is not needed now
+var <- names(x)[!names(x) %in% c('recode')]
+x <- x[,var]
 
 cc <- ctryCodeTable()
 
