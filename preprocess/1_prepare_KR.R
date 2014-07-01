@@ -34,7 +34,7 @@ V <- getDHS("KR", "raw")
 #foodvars <- colnames(V)[which(substr(colnames(V), 1, 4) %in% paste0('v', 409:414))]
 strvars <- c('DHScode', 'b4', 'v025', 'v102', 'h11', 'v113', 'v116', 'v119', 'v127', 'v149','v459')
 intvars <- c('year', 'v001', 'v002', 'v012','v115', 'v137')
-numvars <- c('hw5', 'hw11', 'hw53')
+numvars <- c('hw5','hw8', 'hw11', 'hw53')
 percvars <- c('hw4','hw7', 'hw10') #EH 2014/4/18 percentile variables
 #facvars <- c() 
 
@@ -114,9 +114,10 @@ x$v113 <- as.character(x$v113)
 
 
 #Time to drinking water
+x$v115 <- as.integer(x$v115)
 x$v115[x$v115==996] <- 0
 x$v115[x$v115==997] <- NA
-x$v115[x$v115==998] <- 'do not know'
+x$v115[x$v115==998] <- NA
 x$v115[x$v115>900] <- NA
 
 #Toilet facilities
@@ -152,10 +153,12 @@ x$h11<- as.factor(x$h11)
 x$h11 <- read_reclass(x$h11,'response',"projects/elise/reclass/h11.csv")
 
 #anthropometry percentiles
-x$hw4 <- x$hw4 / 100
-x$hw7 <- x$hw7 / 100
-x$hw10 <- x$hw10 / 100
 
+
+#anthropometry Standard Devs
+x$hw5 <- x$hw5 / 100
+x$hw8 <- x$hw8 / 100
+x$hw11 <- x$hw11 / 100
 # remove bad data
 
 # RH, 2014/4/15
@@ -163,7 +166,8 @@ x$hw10 <- x$hw10 / 100
 # There are 1842 records with a value > 50, 1796 are from IA-2005 (out of 51555)
 # I have removed these 
 #Iron levels
-x$hw53 <- x$hw53[x$hw53 > 40] <- NA
+x$hw53 <- x$hw53/10
+x$hw53[x$hw53 > 40] <- NA
 
 #removes recode variable since it is not needed now
 var <- names(x)[!names(x) %in% c('recode')]
@@ -173,5 +177,23 @@ cc <- ctryCodeTable()
 
 x <- merge(cc[, c('DHScode', 'ISO3', 'countryname')], x, by='DHScode', all.y=TRUE)
 
+x$ISO3 <- x$ISO3.x
+x$countryname <- x$countryname.x
+
 save(x, file='data/processed/KR_prepared.RData')
+
+
+
+# # #splits into categories (quant, qual)
+# allcol <- c('DHScode', 'ISO3', 'countryname', 'year', 'v001','v002', 'b4')
+# quantcol <- unique(c(allcol, intvars, numvars, percvars))
+# qualcol <- unique(c(allcol, strvars))
+
+# #spliting in up int quantitative data and qualitative data
+# xquant <- x[,quantcol]
+# xqual <- x[,qualcol]
+
+# save(xquant, file='data/processed/KR_prepared_quant.RData')
+# save(xqual, file='data/processed/KR_prepared_qual.RData')
+
 
