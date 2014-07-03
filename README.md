@@ -7,4 +7,5 @@ Drive/DHS/data/processed
 
 
 Fully processed and aggregated data is in:
-Drive/DHS/data/processed <- change this
+Drive/DHS/data/aggregated
+
