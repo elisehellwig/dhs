@@ -1,10 +1,10 @@
 
-plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='PuBuGn', reverse=FALSE, point_size=0.5) {
+plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5) {
 	#df <- is the data frame that contains the data that you want to plot
 	#df <- the variable that you want to plot, in quotes
 	#region <- the continent code for the continent you want to plot, or some other code for a region we have yet to come up with (ex Subsaharan Africa, or the Sahel) 
 	#(AF=Africa, AS=Asia, NO=North Amrica, SA=South America, OC=Oceana, EU=Europe
-	#country needs to be the ISO3 code for the country
+	#country is country name in quotes
 
 
 	require(sp)
@@ -94,9 +94,6 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 ​
 
 }
-
-
-
 
 
 
