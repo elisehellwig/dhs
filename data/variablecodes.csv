@@ -1,0 +1,22 @@
+varcode,varname
+v001,Cluster Number
+v002,Houshold Number
+v012,Age
+v025,Place of Residence
+v102,Place of Residence
+v113,Source of Drinking Water
+v115,Time to Drinking Water
+v116,Toilet Facilites
+v119,Has Electricity?
+v137,Number of Children Under 5
+v149,Highest Level of Education
+v459,Children Sleepign Under Mosquito Net
+b4,Sex of child
+h11,Had Diarrhea Recently
+hw4,Height Age Percentile
+hw5,Height/Age Std Dev
+hw7,Weight/Age Percentile
+hw8,Weight/Age Std Dev
+hw10,Weight/Height Percentile
+hw11,Weight/Height Std Dev
+hw53,Hemoglobin Level (g/dL)

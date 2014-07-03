@@ -1,250 +1,196 @@
-contcode,ISO3
-AF,DZA
-AF,AGO
-AF,SHN
-AF,BEN
-AF,BWA
-AF,BFA
-AF,BDI
-AF,CMR
-AF,CPV
-AF,CAF
-AF,TCD
-AF,COM
-AF,COG
-AF,DJI
-AF,EGY
-AF,GNQ
-AF,ERI
-AF,ETH
-AF,GAB
-AF,GMB
-AF,GHA
-AF,GNB
-AF,GIN
-AF,CIV
-AF,KEN
-AF,LSO
-AF,LBR
-AF,LBY
-AF,MDG
-AF,MWI
-AF,MLI
-AF,MRT
-AF,MUS
-AF,MYT
-AF,MAR
-AF,MOZ
-AF,NOM
-AF,NER
-AF,NGA
-AF,STP
-AF,REU
-AF,RWA
-AF,STP
-AF,SEN
-AF,SYC
-AF,SLE
-AF,SOM
-AF,ZAF
-AF,SHN
-AF,SDN
-AF,SWZ
-AF,TZA
-AF,TGO
-AF,TUN
-AF,UGA
-AF,COD
-AF,ZMB
-AF,TZA
-AF,ZWE
-AF,SSD
-AF,COD
-EU,ALB
-EU,AND
-EU,AUT
-EU,BLR
-EU,BEL
-EU,BIH
-EU,BGR
-EU,HRV
-EU,CYP
-EU,CZE
-EU,DNK
-EU,EST
-EU,FRO
-EU,FIN
-EU,FRA
-EU,DEU
-EU,GIB
-EU,GRC
-EU,HUN
-EU,ISL
-EU,IRL
-EU,ITA
-EU,LVA
-EU,LIE
-EU,LTU
-EU,LUX
-EU,MKD
-EU,MLT
-EU,MDA
-EU,MCO
-EU,NLD
-EU,NOR
-EU,POL
-EU,PRT
-EU,ROU
-EU,RUS
-EU,SMR
-EU,SRB
-EU,SVK
-EU,SVN
-EU,ESP
-EU,SWE
-EU,CHE
-EU,UKR
-EU,GBR
-EU,VAT
-EU,RSB
-EU,IMN
-EU,XKX
-EU,MNE
-AS,AFG
-AS,ARM
-AS,AZE
-AS,BHR
-AS,BGD
-AS,BTN
-AS,BRN
-AS,KHM
-AS,CHN
-AS,CXR
-AS,CCK
-AS,IOT
-AS,GEO
-AS,HKG
-AS,IND
-AS,IDN
-AS,IRN
-AS,IRQ
-AS,ISR
-AS,JPN
-AS,JOR
-AS,KAZ
-AS,PRK
-AS,KOR
-AS,KWT
-AS,KGZ
-AS,LAO
-AS,LBN
-AS,MAC
-AS,MYS
-AS,MDV
-AS,MNG
-AS,MMR
-AS,NPL
-AS,OMN
-AS,PAK
-AS,PHL
-AS,QAT
-AS,SAU
-AS,SGP
-AS,LKA
-AS,SYR
-AS,TWN
-AS,TJK
-AS,THA
-AS,TUR
-AS,TKM
-AS,ARE
-AS,UZB
-AS,VNM
-AS,YEM
-AS,PSE
-OC,ASM
-OC,AUS
-OC,NZL
-OC,COK
-OC,FJI
-OC,PYF
-OC,GUM
-OC,KIR
-OC,MNP
-OC,MHL
-OC,FSM
-OC,UMI
-OC,NRU
-OC,NCL
-OC,NZL
-OC,NIU
-OC,NFK
-OC,PLW
-OC,PNG
-OC,MNP
-OC,SLB
-OC,TKL
-OC,TON
-OC,TUV
-OC,VUT
-OC,UMI
-OC,WLF
-OC,WSM
-OC,TLS
-NO,AIA
-NO,ATG
-NO,ABW
-NO,BHS
-NO,BRB
-NO,BLZ
-NO,BMU
-NO,VGB
-NO,CAN
-NO,CYM
-NO,CRI
-NO,CUB
-NO,CUW
-NO,DMA
-NO,DOM
-NO,SLV
-NO,GRL
-NO,GRD
-NO,GLP
-NO,GTM
-NO,HTI
-NO,HND
-NO,JAM
-NO,MTQ
-NO,MEX
-NO,SPM
-NO,MSR
-NO,ANT
-NO,KNO
-NO,NIC
-NO,PAN
-NO,PRI
-NO,KNO
-NO,LCA
-NO,SPM
-NO,VCT
-NO,TTO
-NO,TCA
-NO,VIR
-NO,USA
-NO,SXM
-NO,BES
-SA,ARG
-SA,BOL
-SA,BRA
-SA,CHL
-SA,COL
-SA,ECU
-SA,FLK
-SA,GUF
-SA,GUF
-SA,GUY
-SA,PRY
-SA,PER
-SA,SUR
-SA,URY
-SA,VEN
+contcode,ISO3,countryname
+AF,DZA,Algeria
+AF,AGO,Angola
+AF,SHN,Ascension
+AF,BEN,Benin
+AF,BWA,Botswana
+AF,BFA,Burkina Faso
+AF,BDI,Burundi
+AF,CMR,Cameroon
+AF,CPV,Cape Verde Islands
+AF,CAF,Central African Republic
+AF,TCD,Chad
+AF,COM,Comoros
+AF,COG,Republic of the Congo
+AF,DJI,Djibouti
+AF,EGY,Egypt
+AF,GNQ,Equatorial Guinea
+AF,ERI,Eritrea
+AF,ETH,Ethiopia
+AF,GAB,Gabon
+AF,GMB,Gambia
+AF,GHA,Ghana
+AF,GNB,Guinea-Bissau
+AF,GIN,Guinea
+AF,CIV,Cote D'Ivoire
+AF,KEN,Kenya
+AF,LSO,Lesotho
+AF,LBR,Liberia
+AF,LBY,Libya
+AF,MDG,Madagascar
+AF,MWI,Malawi
+AF,MLI,Mali
+AF,MRT,Mauritania
+AF,MUS,Mauritius
+AF,MYT,Mayotte Island
+AF,MAR,Morocco
+AF,MOZ,Mozambique
+AF,NOM,Namibia
+AF,NER,Niger
+AF,NGA,Nigeria
+AF,REU,Reunion
+AF,RWA,Rwanda
+AF,STP,Sao Tome and Principe
+AF,SEN,Senegal
+AF,SYC,Seychelles
+AF,SLE,Sierra Leone
+AF,SOM,Somalia
+AF,ZAF,South Africa
+AF,SHN,St. Helena
+AF,SDN,Sudan
+AF,SWZ,Swaziland
+AF,TZA,Tanzania
+AF,TGO,Togo
+AF,TUN,Tunisia
+AF,UGA,Uganda
+AF,COD,Democratic Republic of the Congo
+AF,ZMB,Zambia
+AF,ZWE,Zimbabwe
+AF,SSD,South Sudan
+EU,ALB,Albania
+EU,MDA,Moldova 
+AS,AFG,Afghanistan
+AS,ARM,Armenia
+AS,AZE,Azerbaijan
+AS,BHR,Bahrain
+AS,BGD,Bangladesh
+AS,BTN,Bhutan
+AS,BRN,Brunei
+AS,KHM,Cambodia
+AS,CHN,China
+AS,CXR,Christmas Island
+AS,CCK,Cocos Islands
+AS,IOT,Diego Garcia
+AS,GEO,Georgia
+AS,HKG,Hong Kong
+AS,IND,India
+AS,IDN,Indonesia
+AS,IRN,Iran
+AS,IRQ,Iraq
+AS,ISR,Israel
+AS,JPN,Japan
+AS,JOR,Jordan
+AS,KAZ,Kazakhstan
+AS,PRK,North Korea
+AS,KOR,South Korea
+AS,KWT,Kuwait
+AS,KGZ,Kyrgyzstan
+AS,LAO,Laos
+AS,LBN,Lebanon
+AS,MAC,Macau
+AS,MYS,Malaysia
+AS,MDV,Maldives
+AS,MNG,Mongolia
+AS,MMR,Myanmar
+AS,NPL,Nepal
+AS,OMN,Oman
+AS,PAK,Pakistan
+AS,PHL,Philippines
+AS,QAT,Qatar
+AS,SAU,Saudi Arabia
+AS,SGP,Singapore
+AS,LKA,Sri Lanka
+AS,SYR,Syria
+AS,TWN,Taiwan
+AS,TJK,Tajikistan
+AS,THA,Thailand
+AS,TUR,Turkey
+AS,TKM,Turkmenistan
+AS,ARE,United Arab Emirates
+AS,UZB,Uzbekistan
+AS,VNM,Vietnam
+AS,YEM,Yemen
+AS,PSE,Palestine
+OC,ASM,American Samoa
+OC,AUS,Australia
+OC,COK,Cook Islands
+OC,FJI,Fiji Islands
+OC,PYF,French Polynesia
+OC,GUM,Guam
+OC,KIR,Kiribati
+OC,MNP,Mariana Islands
+OC,MHL,Marshall Islands
+OC,FSM,Federated States of Micronesia
+OC,UMI,Midway Islands
+OC,NRU,Nauru
+OC,NCL,New Caledonia
+OC,NZL,New Zealand
+OC,NIU,Niue
+OC,NFK,Norfolk Island
+OC,PLW,Palau
+OC,PNG,Papua New Guinea
+OC,MNP,Saipan
+OC,SLB,Solomon Islands
+OC,TKL,Tokelau
+OC,TON,Tonga
+OC,TUV,Tuvalu
+OC,VUT,Vanuatu
+OC,UMI,Wake Island
+OC,WLF,Wallis and Futuna Islands
+OC,WSM,Samoa
+OC,TLS,East Timor
+NO,AIA,Anguilla
+NO,ATG,Antigua and Barbuda
+NO,ABW,Aruba
+NO,BHS,Bahamas
+NO,BRB,Barbados
+NO,BLZ,Belize
+NO,BMU,Bermuda
+NO,VGB,British Virgin Islands
+NO,CAN,Canada
+NO,CYM,Cayman Islands
+NO,CRI,Costa Rica
+NO,CUB,Cuba
+NO,CUW,Curacao
+NO,DMA,Dominica
+NO,DOM,Dominican Republic
+NO,SLV,El Salvador
+NO,GRL,Greenland
+NO,GRD,Grenada and Carriacuou
+NO,GLP,Guadeloupe
+NO,GTM,Guatemala
+NO,HTI,Haiti
+NO,HND,Honduras
+NO,JAM,Jamaica
+NO,MTQ,Martinique
+NO,MEX,Mexico
+NO,SPM,Miquelon
+NO,MSR,Montserrat
+NO,ANT,Netherlands Antilles
+NO,NIC,Nicaragua
+NO,PAN,Panama
+NO,PRI,Puerto Rico
+NO,KNO,St. Kitts and Nevis
+NO,LCA,St. Lucia
+NO,SPM,St. Pierre and Miquelon
+NO,VCT,St. Vincent
+NO,TTO,Trinidad and Tobago
+NO,TCA,Turks and Caicos Islands
+NO,VIR,US Virgin Islands
+NO,USA,United States
+NO,SXM,Sint Maarten
+NO,BES,Bonaire
+SA,ARG,Argentina
+SA,BOL,Bolivia
+SA,BRA,Brazil
+SA,CHL,Chile
+SA,COL,Colombia
+SA,ECU,Ecuador
+SA,FLK,Falkland Islands
+SA,GUF,Guiana
+SA,GUY,Guyana
+SA,PRY,Paraguay
+SA,PER,Peru
+SA,SUR,Suriname
+SA,URY,Uruguay
+SA,VEN,Venezuela
