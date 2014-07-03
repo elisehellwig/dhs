@@ -1,41 +1,55 @@
 
 setwd('d:/gdrive/projects/DHS')
 #setwd('c:/gdrive/projects/DHS')
-setwd('/Users/echellwig/Google Drive/DHS/') #Elise
+setwd('/Users/echellwig/Drive/DHS/') #Elise
 
-source('R/functions/aggregate_functions.R')
+source('/Users/echellwig/Documents/Research/dhs/functions/aggregate_functions.R')
 #source('R/functions/pre_process_functions.R')
 
+load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
 
+load('/Users/echellwig/Drive/DHS/data/processed/KR_prepared.RData')
 for (recode in c('KR'#, 'IR', 'HR'
 )) {
 	
-	d <- try( getDHS(recode) )
 	
+	#d <- try( getDHS(recode) )
 	
+	d <- x
+
 	if (class(d) == 'try-error') next
 	
 	
-	p = paste0('data/processed/', recode)
+	p = paste0('data/aggregated/', recode)
 	n <- dhsAggregate(d, level='national')
-	write.csv(n, paste0(p, '_national.csv'), row.names=FALSE)
-	save(n, file=paste0(p, '_national.RData'))
-		
-		
+	nn <- n[[1]]
+	nc <- n[[2]]
+	#write.csv(n, paste0(p, '_national.csv'), row.names=FALSE)
+	save(nn, file=paste0(p, '_national_num.RData'))
+	save(nc, file=paste0(p, '_national _cat.RData'))
+
 	n <- dhsAggregate(d, level='national', sex=TRUE)
-	write.csv(n, paste0(p, '_sex_national.csv'), row.names=FALSE)
-	save(n, file=paste0(p, '_sex_national.RData'))
-		
-		
+	nn <- n[[1]]
+	nc <- n[[2]]
+	#write.csv(n, paste0(p, '_national.csv'), row.names=FALSE)
+	save(nn, file=paste0(p, '_sex_national_num.RData'))
+	save(nc, file=paste0(p, '_sex_national _cat.RData'))
+
+	print('cluster')
 	cl <- dhsAggregate(d, level='cluster')
-	write.csv(cl, paste0(p, '_cluster.csv'), row.names=FALSE)
-	save(cl, file=paste0(p, '_cluster.RData'))
-	
+	cln <- cl[[1]]
+	clc <- cl[[2]]
+	#write.csv(cl, paste0(p, '_cluster.csv'), row.names=FALSE)
+	save(cln, file=paste0(p, '_cluster_num.RData'))
+	save(clc, file=paste0(p, '_cluster_cat.RData'))
 	
 	cl <- dhsAggregate(d, level='cluster', sex=TRUE)
-	write.csv(cl, paste0(p, '_sex_cluster.csv'), row.names=FALSE)
-	save(cl, file=paste0(p, '_sex_cluster.RData'))
-	
+	cln <- cl[[1]]
+	clc <- cl[[2]]
+	#write.csv(cl, paste0(p, '_cluster.csv'), row.names=FALSE)
+	save(cln, file=paste0(p, '_sex_cluster_num.RData'))
+	save(clc, file=paste0(p, '_sex_cluster_cat.RData'))
+
 }
 
 
