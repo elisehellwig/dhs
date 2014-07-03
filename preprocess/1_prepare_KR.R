@@ -85,7 +85,6 @@ x$v127<- iconv(x$v127, '', 'UTF-8')
 x$v149<- iconv(x$v149, '', 'UTF-8')
 x$h11<- iconv(x$h11, '', 'UTF-8')
 
-#x2<-x
 #recoding with major categories
 x <- recode_var(x, mapfile, c('v113','v116', 'v127'), major=TRUE)
 
