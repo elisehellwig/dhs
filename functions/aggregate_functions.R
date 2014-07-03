@@ -30,18 +30,19 @@ dhsAggregate <- function(d, type="KR",level='national', sex=FALSE, age=FALSE, ag
 	}
 
 
-	d[,'DHScode'] <- NULL
-
 
 	#numeric variables
+	x <- c(x, 'DHScode')
 	numvars <- colnames(d)[!sapply(d, is.character)]
 	numvars <- numvars[!numvars %in% x]
 	an <- aggregate(d[, numvars], d[, x], FUN=fun, na.rm=TRUE)
 	
 
 	#categorical variables
+	
 	catvars <- c(colnames(d)[sapply(d, is.character)], colnames(d)[sapply(d, is.factor)])
 	catvars <- catvars[!catvars %in% x]
+
 
 	for (v in catvars) {
 		d[,v] <- as.factor(d[,v])
@@ -61,15 +62,17 @@ dhsAggregate <- function(d, type="KR",level='national', sex=FALSE, age=FALSE, ag
 		if (type == "HR"){
 			g$hv001 <- g$v001
 		}
+		print(2.25)
 		#numeric variables
-		an <- merge(g, an, by=c('ISO3', 'year', clustervar))
+		an <- merge(g, an, by=c('DHScode', 'year', clustervar))
 		an <- merge(ctt, an, by='ISO3')
 		bn <- an[, 'ISO3', drop=FALSE]
 		an$ISO3 <- NULL
 		an <- cbind(bn, an)
 
+		print(2.75)
 		#categorical variables
-		ac <- merge(g, ac, by=c('ISO3', 'year', clustervar))
+		ac <- merge(g, ac, by=c('DHScode', 'year', clustervar))
 		ac <- merge(ctt, ac, by='ISO3')
 		bc <- ac[, 'ISO3', drop=FALSE]
 		ac$ISO3 <- NULL
