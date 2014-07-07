@@ -12,16 +12,16 @@ cln1 <- cln[cln$countryname=='Nigeria',]
 
 spd <- DHSsp(cln1)
 
-ext1 <- extent(spd)
+ext1 <- extent(3, 14, 2, 15)
 
-r <- raster(ext1, res=1/311, vals=NULL, crs=CRS("+proj=longlat +ellps=WGS84"))
+r <- raster(ext1, res=1/10, crs=CRS("+proj=longlat +ellps=WGS84"))
 values(r) <- rep(0, ncell(r))
 
 
 lonlat1 <- cbind(cln1[,'lon'], cln1[,'lat'])
 fit <- Tps(lonlat1, cln1$hw5)
 
-predict(r, fit, ext=ext1)
+interp <- interpolate(r, fit, ext=ext1)
 
 
 
