@@ -12,7 +12,7 @@ cln1 <- cln[cln$countryname=='Nigeria',]
 
 spd <- DHSsp(cln1)
 
-ext1 <- extent(3, 14, 2, 15)
+ext1 <- extent(spd)
 
 r <- raster(ext1, res=1/10, crs=CRS("+proj=longlat +ellps=WGS84"))
 values(r) <- rep(0, ncell(r))
