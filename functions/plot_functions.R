@@ -29,7 +29,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	vars <- c('ISO3','contcode','year','v001','lon','lat','alt','URBAN_RURA',variable)
 	dfc <- dfc[,vars]	
 
-	print(1)
+
 	#this gets the percent response yes for yes/no variables in the categorical variable data frame
 	if (yn==TRUE) {
 		dfc[,variable] <- dfc[,variable][,2]
@@ -55,7 +55,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	}
 	dfc <- dfc[year.rows,]
 
-	print(2)
+
 	#gets rid of NAs etc.
 	cases <- complete.cases(dfc[,variable])
 	dfc <- dfc[cases,]
@@ -68,7 +68,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	#creating intervals for colors
 	breaks <- summary(spdf@data[,variable])[1:6]
 
-	print(3)
+
 	#making sure intervals encompass the whole data set
 	if (breaks[6]<max(spdf@data[,variable],na.rm=TRUE)) {
 		breaks[6] <- breaks[6] + 0.1
