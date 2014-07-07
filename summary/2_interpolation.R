@@ -10,20 +10,19 @@ load('KR_cluster_num.RData')
 
 cln1 <- cln[cln$countryname=='Nigeria',]
 
-ext1 <- extent(xmin=)
+spd <- DHSsp(cln1)
 
+ext1 <- extent(spd)
+
+r <- raster(ext1, res=1/311, vals=NULL, crs=CRS("+proj=longlat +ellps=WGS84"))
+values(r) <- rep(0, ncell(r))
 
 
 lonlat1 <- cbind(cln1[,'lon'], cln1[,'lat'])
-
-fit1 <- Tps()
-
-
-
-
-spd <- DHSsp(cln1)
-
-spd <- spd
-
 fit <- Tps(lonlat1, cln1$hw5)
+
+predict(r, fit, ext=ext1)
+
+
+
 
