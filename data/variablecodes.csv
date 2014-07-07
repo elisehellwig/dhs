@@ -10,7 +10,7 @@ v116,Toilet Facilites
 v119,Has Electricity?
 v137,Number of Children Under 5
 v149,Highest Level of Education
-v459,Children Sleepign Under Mosquito Net
+v459,Children Sleeping Under Mosquito Net
 b4,Sex of child
 h11,Had Diarrhea Recently
 hw4,Height Age Percentile
@@ -20,3 +20,4 @@ hw8,Weight/Age Std Dev
 hw10,Weight/Height Percentile
 hw11,Weight/Height Std Dev
 hw53,Hemoglobin Level (g/dL)
+v127,Floor Material
