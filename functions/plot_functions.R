@@ -1,5 +1,5 @@
 
-plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5) {
+plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft') {
 	#df <- is the data frame that contains the data that you want to plot
 	#df <- the variable that you want to plot, in quotes
 	#region <- the continent code for the continent you want to plot, or some other code for a region we have yet to come up with (ex Subsaharan Africa, or the Sahel) 
@@ -13,6 +13,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	require(scales)
 	require(raster)
 	require(classInt)
+	require(RColorBrewer)
 
 	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
 	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
@@ -89,7 +90,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	#plotting
 	data(wrld_simpl)
 	plot(spdf, pch=20, col=colcode, cex=point_size)
-	legend("bottomleft", title=paste(vn, 'in', reg.name), legend=names(attr(colcode, "table")), fill=attr(colcode, "palette"), bty="n") ​
+	legend(legendlocation, title=paste(vn, 'in', reg.name), legend=names(attr(colcode, "table")), fill=attr(colcode, "palette"), bty="n") ​
 	plot(wrld_simpl, add=TRUE)
 ​
 
