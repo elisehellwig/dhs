@@ -1,11 +1,11 @@
 
-plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft', yn=FALSE) {
+plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft', cat=FALSE) {
 	#df <- is the data frame that contains the data that you want to plot
 	#df <- the variable that you want to plot, in quotes
 	#region <- the continent code for the continent you want to plot, or some other code for a region we have yet to come up with (ex Subsaharan Africa, or the Sahel) 
 	#(AF=Africa, AS=Asia, NO=North Amrica, SA=South America, OC=Oceana, EU=Europe
 	#country is country name in quotes
-
+	#cat <- for categorical variables, the category you want to plot the percent of (ex piped for Drinking water source)
 
 	require(sp)
 	require(maptools)
@@ -29,11 +29,12 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	vars <- c('ISO3','contcode','year','v001','lon','lat','alt','URBAN_RURA',variable)
 	dfc <- dfc[,vars]	
 
-
-	#this gets the percent response yes for yes/no variables in the categorical variable data frame
-	if (yn==TRUE) {
-		dfc[,variable] <- dfc[,variable][,2]
-	}
+	#this gets the percent for the category of interest from the data frame 
+	if (cat!=FALSE) {
+		dfc[,variable] <- dfc[,variable][,cat]
+		print(1)
+		}
+	#print(str(dfc))
 
 	#country
 	if (country=='all') {
@@ -92,6 +93,11 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 
 	#gets variable name (not code)
 	vn <- varcodes[varcodes$varcode==variable,'varname']
+	
+	#adds category if relevant
+	if (cat!=FALSE) {
+		vn <- paste(vn, '%', cat)
+		}
 
 	#plotting
 	data(wrld_simpl)
