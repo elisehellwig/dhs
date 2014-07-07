@@ -1,5 +1,5 @@
 
-plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft') {
+plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft', yn=FALSE) {
 	#df <- is the data frame that contains the data that you want to plot
 	#df <- the variable that you want to plot, in quotes
 	#region <- the continent code for the continent you want to plot, or some other code for a region we have yet to come up with (ex Subsaharan Africa, or the Sahel) 
@@ -27,7 +27,13 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	
 	#variable
 	vars <- c('ISO3','contcode','year','v001','lon','lat','alt','URBAN_RURA',variable)
-	dfc <- dfc[,vars]
+	dfc <- dfc[,vars]	
+
+	print(1)
+	#this gets the percent response yes for yes/no variables in the categorical variable data frame
+	if (yn==TRUE) {
+		dfc[,variable] <- dfc[,variable][,2]
+	}
 
 	#country
 	if (country=='all') {
@@ -49,7 +55,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	}
 	dfc <- dfc[year.rows,]
 
-
+	print(2)
 	#gets rid of NAs etc.
 	cases <- complete.cases(dfc[,variable])
 	dfc <- dfc[cases,]
@@ -62,6 +68,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	#creating intervals for colors
 	breaks <- summary(spdf@data[,variable])[1:6]
 
+	print(3)
 	#making sure intervals encompass the whole data set
 	if (breaks[6]<max(spdf@data[,variable],na.rm=TRUE)) {
 		breaks[6] <- breaks[6] + 0.1
@@ -83,12 +90,12 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	
 	colcode <- findColours(cints, colpal)
 
-
 	#gets variable name (not code)
 	vn <- varcodes[varcodes$varcode==variable,'varname']
 
 	#plotting
 	data(wrld_simpl)
+
 	plot(spdf, pch=20, col=colcode, cex=point_size)
 	legend(legendlocation, title=paste(vn, 'in', reg.name), legend=names(attr(colcode, "table")), fill=attr(colcode, "palette"), bty="n") ​
 	plot(wrld_simpl, add=TRUE)
