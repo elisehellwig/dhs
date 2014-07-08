@@ -117,6 +117,8 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	require(raster)
 	require(fields)
 
+	source('/Users/echellwig/Documents/Research/dhs/functions/general.R')
+
 	vars <- c('DHScode', 'countryname', 'year', longitude, latitude, variable)
 	d <- df[,vars]
 
@@ -124,6 +126,7 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	if (cat!=FALSE) {
 		d[,variable] <- d[,variable][,cat]
 	}
+
 
 	#gets the country
 	c.rows <- which(d[,'countryname']==country)
@@ -135,9 +138,11 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 		dc <- dc[year.rows,]
 	}
 
+
 	#converts to spatial data frame and gets extent of sampling area
 	sdc <- DHSsp(dc)
 	ext1 <- extent(sdc)
+
 
 	#creates raster
 	r <- raster(ext1, res=reso, crs=CRS("+proj=longlat +ellps=WGS84"))
@@ -146,6 +151,7 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	#fits TPS
 	lonlat <- cbind(dc[,longitude], dc[,latitude])
 	fit <- Tps(lonlat, dc[,variable])
+
 
 	#interpolation
 	interp <- interpolate(r, fit, ext=ext1)
