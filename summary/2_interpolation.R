@@ -1,27 +1,34 @@
-setwd('/Users/echellwig/Drive/DHS/data/aggregated/')
+setwd('/Users/echellwig/Drive/DHS/')
 setwd("d:/gdrive/projects/DHS/")
 library(raster)
 library(fields)
 
 
 source('/Users/echellwig/Documents/Research/dhs/functions/general.R')
-
-load('KR_cluster_num.RData')
-
-cln1 <- cln[cln$countryname=='Nigeria',]
-
-spd <- DHSsp(cln1)
-
-ext1 <- extent(spd)
-
-r <- raster(ext1, res=1/10, crs=CRS("+proj=longlat +ellps=WGS84"))
-values(r) <- rep(0, ncell(r))
+source('/Users/echellwig/Documents/Research/dhs/functions/summary_functions.R')
 
 
-lonlat1 <- cbind(cln1[,'lon'], cln1[,'lat'])
-fit <- Tps(lonlat1, cln1$hw5)
+load('data/aggregated/KR_cluster_num.RData')
 
-interp <- interpolate(r, fit, ext=ext1)
+#removes weird characters from Cote d'Ivoire's name
+civ <- grep('Ivoire', cln$countryname)
+cln[civ, 'countryname'] <- 'Cote dIvoire'
+
+#sets up data frame to put interpolations into
+vars <- c("URBAN_RURA", "v012", "v115", "v137", "hw4", "hw5", "hw7", "hw8" , "hw10", "hw11", "hw53") 
+countries <- unique(cln$countryname)
+numints <- as.data.frame(matrix(rep(1, length(vars)*length(countries)), nrow=length(countries), ncol=length(vars)))
+colnames(numints) <- vars
+rownames(numints) <- countries
+
+#interpolate all the things!
+for (j in 1:length(vars)) {
+	for (i in 1:length(countries)) {
+		numints[i, j] <- intDHS(cln, countries[i], vars[j])
+	}
+}
+
+
 
 
 
