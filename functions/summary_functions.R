@@ -154,7 +154,17 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 }
 
 
+plotint <- function(interp, country, variable) {
+	require(maptools)
+	data(wrld_simpl)
 
+	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
+
+	vn <- varcodes[varcodes$varcode==variable,'varname']
+
+	plot(interp, main=paste('Interpolation of', vn, 'in', country))
+	plot(wrld_simpl, add=TRUE)
+}
 
 
 
