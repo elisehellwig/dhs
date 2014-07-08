@@ -11,24 +11,19 @@ source('/Users/echellwig/Documents/Research/dhs/functions/summary_functions.R')
 load('data/aggregated/KR_cluster_num.RData')
 
 #removes weird characters from Cote d'Ivoire's name
-civ <- grep('Ivoire', cln$countryname)
-cln[civ, 'countryname'] <- 'Cote dIvoire'
+
+cln$countryname <- sub("C\xf4te d'Ivoire", 'Cote dIvoire', cln$countryname)
 
 #sets up data frame to put interpolations into
-vars <- c("URBAN_RURA", "v012", "v115", "v137", "hw4", "hw5", "hw7", "hw8" , "hw10", "hw11", "hw53") 
+vars <- c("v012", "v115", "v137", "hw4", "hw5", "hw7", "hw8" , "hw10", "hw11", "hw53") 
 countries <- unique(cln$countryname)
-numints <- as.data.frame(matrix(rep(1, length(vars)*length(countries)), nrow=length(countries), ncol=length(vars)))
-colnames(numints) <- vars
-rownames(numints) <- countries
 
+
+countries1 <- unique(cln$countryname)[1:5]
 #interpolate all the things!
-for (j in 1:length(vars)) {
-	for (i in 1:length(countries)) {
-		numints[i, j] <- intDHS(cln, countries[i], vars[j])
-	}
-}
 
 
+ex <- sapply(countries1, function(x) intDHS(cln, x, 'hw5'))
 
 
 
