@@ -32,7 +32,6 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	#this gets the percent for the category of interest from the data frame 
 	if (cat!=FALSE) {
 		dfc[,variable] <- dfc[,variable][,cat]
-		print(1)
 		}
 	#print(str(dfc))
 
@@ -109,17 +108,48 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 
 }
 
-intDHS <- function(df, country, res=1/10, longitude='lon', latitude='lat') {
+intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon', latitude='lat', cat=FALSE) {
 	#df is the dataframe where you have all your studd
-	#country is the country you want to interpolate
+	#country is the name of the country you want to interpolate
 	#res is the resolution
+	#longitude and latitude are the names of the variables that contain the longitude and latitude data in the data frame respectively
+
+	require(raster)
+	require(fields)
+
+	vars <- c('DHScode', 'countryname', 'year', longitude, latitude, variable)
+	d <- df[,vars]
+
+	#gets the category you want the percentage of if it is a categorical variable
+	if (cat!=FALSE) {
+		d[,variable] <- d[,variable][,cat]
+	}
+
+	#gets the country
+	c.rows <- which(d[,'countryname']==country)
+	dc <- d[c.rows,]
+
+	#selects years if necessary
+	if (years!='all') {
+		year.rows <- which(dc[,'year']==years)
+		dc <- dc[year.rows,]
+	}
+
+	#converts to spatial data frame and gets extent of sampling area
+	sdc <- DHSsp(dc)
+	ext1 <- extent(sdc)
+
+	#creates raster
+	r <- raster(ext1, res=reso, crs=CRS("+proj=longlat +ellps=WGS84"))
+	values(r) <- rep(0, ncell(r))
 	
+	#fits TPS
+	lonlat <- cbind(dc[,longitude], dc[,latitude])
+	fit <- Tps(lonlat, dc[,variable])
 
-
-
-
-
-
+	#interpolation
+	interp <- interpolate(r, fit, ext=ext1)
+	return(interp)
 
 }
 
