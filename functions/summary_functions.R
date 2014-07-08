@@ -55,9 +55,8 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	}
 	dfc <- dfc[year.rows,]
 
-
 	#gets rid of NAs etc.
-	cases <- complete.cases(dfc[,variable])
+	cases <- complete.cases(dfc)
 	dfc <- dfc[cases,]
 
 
@@ -127,10 +126,12 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 		d[,variable] <- d[,variable][,cat]
 	}
 
-
 	#gets the country
 	c.rows <- which(d[,'countryname']==country)
 	dc <- d[c.rows,]
+
+
+	print(length(which(complete.cases(dc))))
 
 	#selects years if necessary
 	if (years!='all') {
@@ -152,7 +153,7 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	lonlat <- cbind(dc[,longitude], dc[,latitude])
 	fit <- Tps(lonlat, dc[,variable])
 
-
+	print(summary(fit))
 	#interpolation
 	interp <- interpolate(r, fit, ext=ext1)
 	return(interp)
