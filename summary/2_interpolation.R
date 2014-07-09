@@ -22,7 +22,7 @@ for (i in 1:length(vars)) {
 	m <- which(sapply(countries, function(x) datapoints(cln, vars[i], x)<=5))
 	countries <- countries[-m]
 	intlist <- sapply(countries, function(x) intDHS(cln, x, vars[i]))
-	filepath <- paste0('projects/elise/interpolation/', vars[1], 'n.RData')
+	filepath <- paste0('projects/elise/interpolation/', vars[i], 'n.RData')
 	save(intlist, file=filepath)
 }
 
