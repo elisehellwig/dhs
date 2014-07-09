@@ -1,5 +1,5 @@
 #this summarizes and plots aggregated DHS data
-setwd('/Users/echellwig/Drive/DHS/data/aggregated/')
+setwd('/Users/echellwig/Drive/DHS/')
 setwd("d:/gdrive/projects/DHS/")
 library(maptools)
 
@@ -8,8 +8,8 @@ source('/Users/echellwig/Documents/Research/dhs/functions/plot_functions.R')
 
 #loads data
 data(wrld_simpl)
-load('KR_cluster_num.RData')
-load('KR_cluster_cat.RData')
+load('data/aggregated/KR_cluster_num.RData')
+load('data/aggregated/KR_cluster_cat.RData')
 
 
 plotvarsn <- names(cln[11:length(cln)])
