@@ -1,0 +1,247 @@
+countryname,DHScode,ISO2,ISO3,FIPS,UN_regcode,UN_regname,UN_subregcode,UN_subregname
+Aaland Islands,AX,AX,ALA,,150,Europe,154,Northern Europe
+Afghanistan,AF,AF,AFG,AF,142,Asia,34,Southern Asia
+Albania,AL,AL,ALB,AL,150,Europe,39,Southern Europe
+Algeria,DZ,DZ,DZA,AG,2,Africa,15,Northern Africa
+American Samoa,AS,AS,ASM,AQ,9,Oceania,61,Polynesia
+Andorra,AD,AD,AND,AN,150,Europe,39,Southern Europe
+Angola,AO,AO,AGO,AO,2,Africa,17,Sub-Saharan Africa
+Anguilla,AI,AI,AIA,AV,19,Americas,29,Caribbean
+Antarctica,AQ,AQ,ATA,AY,NA,NA,NA,NA
+Antigua and Barbuda,AG,AG,ATG,AC,19,Americas,29,Caribbean
+Argentina,AR,AR,ARG,AR,19,Americas,5,South America
+Armenia,AM,AM,ARM,AM,142,Asia,145,Western Asia
+Aruba,AW,AW,ABW,AA,19,Americas,29,Caribbean
+Australia,AU,AU,AUS,AS,9,Oceania,53,Australia and New Zealand
+Austria,AT,AT,AUT,AU,150,Europe,155,Western Europe
+Azerbaijan,AZ,AZ,AZE,AJ,142,Asia,145,Western Asia
+Bahamas,BS,BS,BHS,BF,19,Americas,29,Caribbean
+Bahrain,BH,BH,BHR,BA,142,Asia,145,Western Asia
+Bangladesh,BD,BD,BGD,BG,142,Asia,34,Southern Asia
+Barbados,BB,BB,BRB,BB,19,Americas,29,Caribbean
+Belarus,BY,BY,BLR,BO,150,Europe,151,Eastern Europe
+Belgium,BE,BE,BEL,BE,150,Europe,155,Western Europe
+Belize,BZ,BZ,BLZ,BH,19,Americas,13,Central America
+Benin,BJ,BJ,BEN,BN,2,Africa,11,Sub-Saharan Africa
+Bermuda,BM,BM,BMU,BD,19,Americas,21,Northern America
+Bhutan,BT,BT,BTN,BT,142,Asia,34,Southern Asia
+Bolivia,BO,BO,BOL,BL,19,Americas,5,South America
+Bosnia and Herzegovina,BA,BA,BIH,BK,150,Europe,39,Southern Europe
+Botswana,BW,BW,BWA,BC,2,Africa,18,Sub-Saharan Africa
+Bouvet Island,BV,BV,BVT,BV,NA,NA,NA,NA
+Brazil,BR,BR,BRA,BR,19,Americas,5,South America
+British Indian Ocean Territory,IO,IO,IOT,IO,NA,NA,NA,NA
+British Virgin Islands,VG,VG,VGB,VI,19,Americas,29,Caribbean
+Brunei,BN,BN,BRN,BX,142,Asia,35,South-Eastern Asia
+Bulgaria,BG,BG,BGR,BU,150,Europe,151,Eastern Europe
+Burkina Faso,BF,BF,BFA,UV,2,Africa,11,Sub-Saharan Africa
+Burma,MM,MM,MMR,BM,142,Asia,35,South-Eastern Asia
+Burundi,BU,BI,BDI,BY,2,Africa,14,Sub-Saharan Africa
+Cambodia,KH,KH,KHM,CB,142,Asia,35,South-Eastern Asia
+Cameroon,CM,CM,CMR,CM,2,Africa,17,Sub-Saharan Africa
+Canada,CA,CA,CAN,CA,19,Americas,21,Northern America
+Cape Verde,CV,CV,CPV,CV,2,Africa,11,Sub-Saharan Africa
+Cayman Islands,KY,KY,CYM,CJ,19,Americas,29,Caribbean
+Central African Republic,CF,CF,CAF,CT,2,Africa,17,Sub-Saharan Africa
+Chad,TD,TD,TCD,CD,2,Africa,17,Sub-Saharan Africa
+Chile,CL,CL,CHL,CI,19,Americas,5,South America
+China,CN,CN,CHN,CH,142,Asia,30,Eastern Asia
+Christmas Island,CX,CX,CXR,KT,NA,NA,NA,NA
+Cocos Islands,CC,CC,CCK,CK,NA,NA,NA,NA
+Colombia,CO,CO,COL,CO,19,Americas,5,South America
+Comoros,KM,KM,COM,CN,2,Africa,14,Sub-Saharan Africa
+Congo (Brazzaville),CG,CG,COG,,2,Africa,17,Sub-Saharan Africa
+Cook Islands,CK,CK,COK,CW,9,Oceania,61,Polynesia
+Costa Rica,CR,CR,CRI,CS,19,Americas,13,Central America
+Côte d'Ivoire,CI,CI,CIV,IV,2,Africa,11,Sub-Saharan Africa
+Croatia,HR,HR,HRV,HR,150,Europe,39,Southern Europe
+Cuba,CU,CU,CUB,CU,19,Americas,29,Caribbean
+Cyprus,CY,CY,CYP,CY,142,Asia,145,Western Asia
+Czech Republic,CZ,CZ,CZE,EZ,150,Europe,151,Eastern Europe
+Democratic Republic of the Congo,CD,CD,COD,CG,2,Africa,17,Sub-Saharan Africa
+Denmark,DK,DK,DNK,DA,150,Europe,154,Northern Europe
+Djibouti,DJ,DJ,DJI,DJ,2,Africa,14,Sub-Saharan Africa
+Dominica,DM,DM,DMA,DO,19,Americas,29,Caribbean
+Dominican Republic,DR,DO,DOM,DR,19,Americas,29,Caribbean
+Ecuador,EC,EC,ECU,EC,19,Americas,5,South America
+Egypt,EG,EG,EGY,EG,2,Africa,15,Northern Africa
+El Salvador,SV,SV,SLV,ES,19,Americas,13,Central America
+Equatorial Guinea,GQ,GQ,GNQ,EK,2,Africa,17,Sub-Saharan Africa
+Eritrea,ER,ER,ERI,ER,2,Africa,14,Sub-Saharan Africa
+Estonia,EE,EE,EST,EN,150,Europe,154,Northern Europe
+Ethiopia,ET,ET,ETH,ET,2,Africa,14,Sub-Saharan Africa
+Falkland Islands,FK,FK,FLK,FK,19,Americas,5,South America
+Faroe Islands,FO,FO,FRO,FO,150,Europe,154,Northern Europe
+Fiji,FJ,FJ,FJI,FJ,9,Oceania,54,Melanesia
+Finland,FI,FI,FIN,FI,150,Europe,154,Northern Europe
+France,FR,FR,FRA,FR,150,Europe,155,Western Europe
+French Guiana,GF,GF,GUF,FG,19,Americas,5,South America
+French Polynesia,PF,PF,PYF,FP,9,Oceania,61,Polynesia
+French Southern and Antarctic Lands,TF,TF,ATF,FS,NA,NA,NA,NA
+Gabon,GA,GA,GAB,GB,2,Africa,17,Sub-Saharan Africa
+Gambia,GM,GM,GMB,GA,2,Africa,11,Sub-Saharan Africa
+Georgia,GE,GE,GEO,GG,142,Asia,145,Western Asia
+Germany,DE,DE,DEU,GM,150,Europe,155,Western Europe
+Ghana,GH,GH,GHA,GH,2,Africa,11,Sub-Saharan Africa
+Gibraltar,GI,GI,GIB,GI,150,Europe,39,Southern Europe
+Greece,GR,GR,GRC,GR,150,Europe,39,Southern Europe
+Greenland,GL,GL,GRL,GL,19,Americas,21,Northern America
+Grenada,GD,GD,GRD,GJ,19,Americas,29,Caribbean
+Guadeloupe,GP,GP,GLP,GP,19,Americas,29,Caribbean
+Guam,GU,GU,GUM,GQ,9,Oceania,57,Micronesia
+Guatemala,GT,GT,GTM,GT,19,Americas,13,Central America
+Guernsey,GG,GG,GGY,GK,150,Europe,154,Northern Europe
+Guinea,GN,GN,GIN,GV,2,Africa,11,Sub-Saharan Africa
+Guinea-Bissau,GW,GW,GNB,PU,2,Africa,11,Sub-Saharan Africa
+Guyana,GY,GY,GUY,GY,19,Americas,5,South America
+Haiti,HT,HT,HTI,HA,19,Americas,29,Caribbean
+Heard Island and McDonald Islands,HM,HM,HMD,HM,NA,NA,NA,NA
+Honduras,HN,HN,HND,HO,19,Americas,13,Central America
+Hong Kong,HK,HK,HKG,HK,142,Asia,30,Eastern Asia
+Hungary,HU,HU,HUN,HU,150,Europe,151,Eastern Europe
+Iceland,IS,IS,ISL,IC,150,Europe,154,Northern Europe
+India,IA,IN,IND,IN,142,Asia,34,Southern Asia
+Indonesia,ID,ID,IDN,ID,142,Asia,35,South-Eastern Asia
+Iran,IR,IR,IRN,IR,142,Asia,34,Southern Asia
+Iraq,IQ,IQ,IRQ,IZ,142,Asia,145,Western Asia
+Ireland,IE,IE,IRL,EI,150,Europe,154,Northern Europe
+Isle of Man,IM,IM,IMN,IM,150,Europe,154,Northern Europe
+Israel,IL,IL,ISR,IS,142,Asia,145,Western Asia
+Italy,IT,IT,ITA,IT,150,Europe,39,Southern Europe
+Jamaica,JM,JM,JAM,JM,19,Americas,29,Caribbean
+Japan,JP,JP,JPN,JA,142,Asia,30,Eastern Asia
+Jersey,JE,JE,JEY,JE,150,Europe,154,Northern Europe
+Jordan,JO,JO,JOR,JO,142,Asia,145,Western Asia
+Kazakhstan,KK,KZ,KAZ,KZ,142,Asia,143,Central Asia
+Kenya,KE,KE,KEN,KE,2,Africa,14,Sub-Saharan Africa
+Kiribati,KI,KI,KIR,KR,9,Oceania,57,Micronesia
+Kuwait,KW,KW,KWT,KU,142,Asia,145,Western Asia
+Kyrgyz Republic,KG,KG,KGZ,KG,142,Asia,143,Central Asia
+Laos,LA,LA,LAO,LA,142,Asia,35,South-Eastern Asia
+Latvia,LV,LV,LVA,LG,150,Europe,154,Northern Europe
+Lebanon,LE,LB,LBN,LE,142,Asia,145,Western Asia
+Lesotho,LS,LS,LSO,LT,2,Africa,18,Sub-Saharan Africa
+Liberia,LB,LR,LBR,LI,2,Africa,11,Sub-Saharan Africa
+Libya,LY,LY,LBY,LY,2,Africa,15,Northern Africa
+Liechtenstein,LI,LI,LIE,LS,150,Europe,155,Western Europe
+Lithuania,LT,LT,LTU,LH,150,Europe,154,Northern Europe
+Luxembourg,LU,LU,LUX,LU,150,Europe,155,Western Europe
+Macau,MO,MO,MAC,MC,142,Asia,30,Eastern Asia
+Macedonia,MK,MK,MKD,MK,150,Europe,39,Southern Europe
+Madagascar,MD,MG,MDG,MA,2,Africa,14,Sub-Saharan Africa
+Malawi,MW,MW,MWI,MI,2,Africa,14,Sub-Saharan Africa
+Malaysia,MY,MY,MYS,MY,142,Asia,35,South-Eastern Asia
+Maldives,MV,MV,MDV,MV,142,Asia,34,Southern Asia
+Mali,ML,ML,MLI,ML,2,Africa,11,Sub-Saharan Africa
+Malta,MT,MT,MLT,MT,150,Europe,39,Southern Europe
+Marshall Islands,MH,MH,MHL,RM,9,Oceania,57,Micronesia
+Martinique,MQ,MQ,MTQ,MB,19,Americas,29,Caribbean
+Mauritania,MR,MR,MRT,MR,2,Africa,11,Sub-Saharan Africa
+Mauritius,MU,MU,MUS,MP,2,Africa,14,Sub-Saharan Africa
+Mayotte,YT,YT,MYT,MF,2,Africa,14,Sub-Saharan Africa
+Mexico,MX,MX,MEX,MX,19,Americas,13,Central America
+Micronesia,FM,FM,FSM,FM,9,Oceania,57,Micronesia
+Moldova,MB,MD,MDA,MD,150,Europe,151,Eastern Europe
+Monaco,MC,MC,MCO,MN,150,Europe,155,Western Europe
+Mongolia,MN,MN,MNG,MG,142,Asia,30,Eastern Asia
+Montenegro,ME,ME,MNE,MJ,150,Europe,39,Southern Europe
+Montserrat,MS,MS,MSR,MH,19,Americas,29,Caribbean
+Morocco,MA,MA,MAR,MO,2,Africa,15,Northern Africa
+Mozambique,MZ,MZ,MOZ,MZ,2,Africa,14,Sub-Saharan Africa
+Namibia,NM,NA,NAM,WA,2,Africa,18,Sub-Saharan Africa
+Nauru,NR,NR,NRU,NR,9,Oceania,57,Micronesia
+Nepal,NP,NP,NPL,NP,142,Asia,34,Southern Asia
+Netherlands,NL,NL,NLD,NL,150,Europe,155,Western Europe
+Netherlands Antilles,AN,AN,ANT,NT,NA,NA,NA,NA
+New Caledonia,NC,NC,NCL,NC,9,Oceania,54,Melanesia
+New Zealand,NZ,NZ,NZL,NZ,9,Oceania,53,Australia and New Zealand
+Nicaragua,NC,NI,NIC,NU,19,Americas,13,Central America
+Niger,NI,NE,NER,NG,2,Africa,11,Sub-Saharan Africa
+Nigeria,NG,NG,NGA,NI,2,Africa,11,Sub-Saharan Africa
+Niue,NU,NU,NIU,NE,9,Oceania,61,Polynesia
+Norfolk Island,NF,NF,NFK,NF,9,Oceania,53,Australia and New Zealand
+North Korea,KP,KP,PRK,KN,142,Asia,30,Eastern Asia
+Northern Mariana Islands,MP,MP,MNP,CQ,9,Oceania,57,Micronesia
+Norway,NO,NO,NOR,NO,150,Europe,154,Northern Europe
+Oman,OM,OM,OMN,MU,142,Asia,145,Western Asia
+Pakistan,PK,PK,PAK,PK,142,Asia,34,Southern Asia
+Palau,PW,PW,PLW,PS,9,Oceania,57,Micronesia
+Palestine,PS,PS,PSE,,142,Asia,145,Western Asia
+Panama,PA,PA,PAN,PM,19,Americas,13,Central America
+Papua New Guinea,PG,PG,PNG,PP,9,Oceania,54,Melanesia
+Paraguay,PY,PY,PRY,PA,19,Americas,5,South America
+Peru,PE,PE,PER,PE,19,Americas,5,South America
+Philippines,PH,PH,PHL,RP,142,Asia,35,South-Eastern Asia
+Pitcairn Islands,PN,PN,PCN,PC,9,Oceania,61,Polynesia
+Poland,PL,PL,POL,PL,150,Europe,151,Eastern Europe
+Portugal,PT,PT,PRT,PO,150,Europe,39,Southern Europe
+Puerto Rico,PR,PR,PRI,RQ,19,Americas,29,Caribbean
+Qatar,QA,QA,QAT,QA,142,Asia,145,Western Asia
+Reunion,RE,RE,REU,RE,2,Africa,14,Sub-Saharan Africa
+Romania,RO,RO,ROU,RO,150,Europe,151,Eastern Europe
+Russia,RU,RU,RUS,RS,150,Europe,151,Eastern Europe
+Rwanda,RW,RW,RWA,RW,2,Africa,14,Sub-Saharan Africa
+Saint Barthelemy,BL,BL,BLM,TB,19,Americas,29,Caribbean
+Saint Helena,SH,SH,SHN,SH,2,Africa,11,Sub-Saharan Africa
+Saint Kitts and Nevis,KN,KN,KNA,SC,19,Americas,29,Caribbean
+Saint Lucia,LC,LC,LCA,ST,19,Americas,29,Caribbean
+Saint Martin,SX,MF,MAF,RN,19,Americas,29,Caribbean
+Saint Pierre and Miquelon,PM,PM,SPM,SB,19,Americas,21,Northern America
+Saint Vincent and the Grenadines,VC,VC,VCT,VC,19,Americas,29,Caribbean
+Samoa,WS,WS,WSM,WS,9,Oceania,61,Polynesia
+San Marino,SM,SM,SMR,SM,150,Europe,39,Southern Europe
+Sao Tome and Principe,ST,ST,STP,TP,2,Africa,17,Sub-Saharan Africa
+Saudi Arabia,SA,SA,SAU,SA,142,Asia,145,Western Asia
+Senegal,SN,SN,SEN,SG,2,Africa,11,Sub-Saharan Africa
+Serbia,RS,RS,SRB,RB,150,Europe,39,Southern Europe
+Seychelles,SC,SC,SYC,SE,2,Africa,14,Sub-Saharan Africa
+Sierra Leone,SL,SL,SLE,SL,2,Africa,11,Sub-Saharan Africa
+Singapore,SG,SG,SGP,SN,142,Asia,35,South-Eastern Asia
+Slovakia,SK,SK,SVK,LO,150,Europe,151,Eastern Europe
+Slovenia,SI,SI,SVN,SI,150,Europe,39,Southern Europe
+Solomon Islands,SB,SB,SLB,BP,9,Oceania,54,Melanesia
+Somalia,SO,SO,SOM,SO,2,Africa,14,Sub-Saharan Africa
+South Africa,ZA,ZA,ZAF,SF,2,Africa,18,Sub-Saharan Africa
+South Georgia South Sandwich Islands,GS,GS,SGS,SX,NA,NA,NA,NA
+South Korea,KR,KR,KOR,KS,142,Asia,30,Eastern Asia
+Spain,ES,ES,ESP,SP,150,Europe,39,Southern Europe
+Sri Lanka,LK,LK,LKA,CE,142,Asia,34,Southern Asia
+Sudan,SD,SD,SDN,SU,2,Africa,15,Northern Africa
+Suriname,SR,SR,SUR,NS,19,Americas,5,South America
+Svalbard,SJ,SJ,SJM,SV,150,Europe,154,Northern Europe
+Swaziland,SZ,SZ,SWZ,WZ,2,Africa,18,Sub-Saharan Africa
+Sweden,SE,SE,SWE,SW,150,Europe,154,Northern Europe
+Switzerland,CH,CH,CHE,SZ,150,Europe,155,Western Europe
+Syrian Arab Republic,SY,SY,SYR,SY,142,Asia,145,Western Asia
+Taiwan,TW,TW,TWN,TW,142,Asia,30,Eastern Asia
+Tajikistan,TJ,TJ,TJK,TI,142,Asia,143,Central Asia
+Tanzania,TZ,TZ,TZA,TZ,2,Africa,14,Sub-Saharan Africa
+Thailand,TH,TH,THA,TH,142,Asia,35,South-Eastern Asia
+Timor-Leste,TL,TL,TLS,TT,142,Asia,35,South-Eastern Asia
+Togo,TG,TG,TGO,TO,2,Africa,11,Sub-Saharan Africa
+Tokelau,TK,TK,TKL,TL,9,Oceania,61,Polynesia
+Tonga,TO,TO,TON,TN,9,Oceania,61,Polynesia
+Trinidad and Tobago,TT,TT,TTO,TD,19,Americas,29,Caribbean
+Tunisia,TN,TN,TUN,TS,2,Africa,15,Northern Africa
+Turkey,TR,TR,TUR,TU,142,Asia,145,Western Asia
+Turkmenistan,TM,TM,TKM,TX,142,Asia,143,Central Asia
+Turks and Caicos Islands,TC,TC,TCA,TK,19,Americas,29,Caribbean
+Tuvalu,TV,TV,TUV,TV,9,Oceania,61,Polynesia
+Uganda,UG,UG,UGA,UG,2,Africa,14,Sub-Saharan Africa
+Ukraine,UA,UA,UKR,UP,150,Europe,151,Eastern Europe
+United Arab Emirates,AE,AE,ARE,AE,142,Asia,145,Western Asia
+United Kingdom,GB,GB,GBR,UK,150,Europe,154,Northern Europe
+United States,US,US,USA,US,19,Americas,21,Northern America
+United States Minor Outlying Islands,UM,UM,UMI,,NA,NA,NA,NA
+United States Virgin Islands,VI,VI,VIR,VQ,19,Americas,29,Caribbean
+Uruguay,UY,UY,URY,UY,19,Americas,5,South America
+Uzbekistan,UZ,UZ,UZB,UZ,142,Asia,143,Central Asia
+Vanuatu,VU,VU,VUT,NH,9,Oceania,54,Melanesia
+Vatican City,VA,VA,VAT,VT,150,Europe,39,Southern Europe
+Venezuela,VE,VE,VEN,VE,19,Americas,5,South America
+Vietnam,VN,VN,VNM,VM,142,Asia,35,South-Eastern Asia
+Wallis and Futuna Islands,WF,WF,WLF,WF,9,Oceania,61,Polynesia
+Western Sahara,EH,EH,ESH,WI,2,Africa,15,Northern Africa
+Yemen,YE,YE,YEM,YM,142,Asia,145,Western Asia
+Zambia,ZM,ZM,ZMB,ZA,2,Africa,14,Sub-Saharan Africa
+Zimbabwe,ZW,ZW,ZWE,ZI,2,Africa,14,Sub-Saharan Africa
