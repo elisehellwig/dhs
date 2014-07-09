@@ -1,9 +1,9 @@
 
-source('R/functions/general.R')
 
 
 dhsAggregate <- function(d, type="KR",level='national', sex=FALSE, age=FALSE, ageagg=12, fun=mean) {
 
+	source('R/functions/general.R')
 
 
 	clustervar <- if (type == "HR") "hv001" else "v001"
@@ -53,7 +53,6 @@ dhsAggregate <- function(d, type="KR",level='national', sex=FALSE, age=FALSE, ag
 	
 	#merge the variables with gps coordinates etc.
 
-	print(2)
 
 	if (level == 'cluster') {
 		g <- getGPS()
@@ -78,7 +77,6 @@ dhsAggregate <- function(d, type="KR",level='national', sex=FALSE, age=FALSE, ag
 		ac$ISO3 <- NULL
 		ac <- cbind(bc, ac)
 	} 
-	print(3)
 
 	a <- list(an, ac)
 	a

@@ -42,6 +42,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	} else {
 		reg.name <- country
 		iso.name <- ctt[ctt$countryname==country,'ISO3']
+		print(iso.name)
 		iso.rows <- which(dfc[,'ISO3']==iso.name)
 	}
 	dfc <- dfc[iso.rows,]
@@ -59,6 +60,9 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	cases <- complete.cases(dfc)
 	dfc <- dfc[cases,]
 
+	#remove clusters with (0,0) for lat long
+	nonzero.rows <- which(dfc[,'lon']!=0)
+	dfc <- dfc[nonzero.rows,]
 
 	#creating spatial data frame
 	lonlat <- cbind(dfc[,'lon'],dfc[,'lat'])
@@ -121,6 +125,7 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	vars <- c('DHScode', 'countryname', 'year', longitude, latitude, variable)
 	d <- df[,vars]
 
+
 	#gets the category you want the percentage of if it is a categorical variable
 	if (cat!=FALSE) {
 		d[,variable] <- d[,variable][,cat]
@@ -131,7 +136,12 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	dc <- d[c.rows,]
 
 
-	print(length(which(complete.cases(dc))))
+	if (length(which(complete.cases(dc)))<5) {
+		print(paste(variable, 'not present for', country))
+		next
+		#stop(paste(variable, 'not present for', country))
+	}
+
 
 	#selects years if necessary
 	if (years!='all') {
@@ -139,6 +149,10 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 		dc <- dc[year.rows,]
 	}
 
+
+	#remove clusters with (0,0) for lat long
+	nonzero.rows <- which(dc[,'lon']!=0)
+	dc <- dc[nonzero.rows,]
 
 	#converts to spatial data frame and gets extent of sampling area
 	sdc <- DHSsp(dc)
@@ -153,7 +167,6 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	lonlat <- cbind(dc[,longitude], dc[,latitude])
 	fit <- Tps(lonlat, dc[,variable])
 
-	print(summary(fit))
 	#interpolation
 	interp <- interpolate(r, fit, ext=ext1)
 	return(interp)
@@ -173,7 +186,14 @@ plotint <- function(interp, country, variable) {
 	plot(wrld_simpl, add=TRUE)
 }
 
-
+datapoints <- function(df, variable, country) {
+	vars <- c('countryname', variable)
+	df <- df[,vars]
+	c.rows <- which(df[,'countryname']==country)
+	dfc <- df[c.rows,]
+	n <- length(which(complete.cases(dfc)))
+	return(n)
+}
 
 
 

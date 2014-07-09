@@ -57,7 +57,7 @@ DHSsp <- function(df, longitude='lon', latitude='lat') {
 	#df is the data frame you want to make spatial
 	#longitude is the name of the longitude variable
 	#latitude is the name of the latitude variable
-	lonlat <- cbind(df[,longitude], df[,latitude])
+	lonlat <- cbind(as.numeric(df[,longitude]), as.numeric(df[,latitude]))
 	spdf <- SpatialPointsDataFrame(coords=lonlat, data=df, proj4string=CRS("+proj=longlat +ellps=WGS84"))
 	return(spdf)
 }
