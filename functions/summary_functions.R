@@ -1,5 +1,5 @@
 
-plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft', cat=FALSE) {
+plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft', cat=FALSE, fit=FALSE) {
 	#df <- is the data frame that contains the data that you want to plot
 	#df <- the variable that you want to plot, in quotes
 	#region <- the continent code for the continent you want to plot, or some other code for a region we have yet to come up with (ex Subsaharan Africa, or the Sahel) 
@@ -42,7 +42,6 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	} else {
 		reg.name <- country
 		iso.name <- ctt[ctt$countryname==country,'ISO3']
-		print(iso.name)
 		iso.rows <- which(dfc[,'ISO3']==iso.name)
 	}
 	dfc <- dfc[iso.rows,]
@@ -137,8 +136,7 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 
 
 	if (length(which(complete.cases(dc)))<5) {
-		print(paste(variable, 'not present for', country))
-		next
+		stop(paste(variable, 'not present for', country))
 		#stop(paste(variable, 'not present for', country))
 	}
 
@@ -169,8 +167,11 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 
 	#interpolation
 	interp <- interpolate(r, fit, ext=ext1)
-	return(interp)
-
+	if (fit=TRUE) {
+		return(fit)
+	} else {
+		return(interp)
+	}
 }
 
 
