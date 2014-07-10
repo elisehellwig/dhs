@@ -18,6 +18,7 @@ cln$countryname <- sub("C\xf4te d'Ivoire", 'Cote dIvoire', cln$countryname)
 vars <- c("v012", "v115", "v137", "hw4", "hw5", "hw7", "hw8" , "hw10", "hw11", "hw53") 
 
 for (i in 1:length(vars)) {
+	print(vars[i])
 	countries <- unique(cln$countryname)
 	m <- which(sapply(countries, function(x) datapoints(cln, vars[i], x)<=5))
 	countries <- countries[-m]
@@ -25,27 +26,6 @@ for (i in 1:length(vars)) {
 	filepath <- paste0('projects/elise/interpolation/', vars[i], 'n.RData')
 	save(intlist, file=filepath)
 }
-
-
-
-
-countries1 <- unique(cln$countryname)[1:5]
-countries2 <- unique(cln$countryname)[5:15]
-countries3 <- unique(cln$countryname)[16:25] 
-countries4 <- unique(cln$countryname)[26:35]
-countries5 <- unique(cln$countryname)[36:47]
-
-#interpolate all the things!
-hw5list <- list(rep(0, length(countries)))
-
-for (i in 1:length(countries)) {
-	print(countries[i])
-	hw5list[[i]] <- intDHS(cln, countries[i], 'hw5')
-}
-
-
-ex <- sapply(countries1, function(x) intDHS(cln, x, 'hw5'))
-
 
 
 
