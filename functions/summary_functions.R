@@ -97,7 +97,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	
 	#adds category if relevant
 	if (cat!=FALSE) {
-		vn <- paste(vn, '%', cat)
+		vn <- paste(vn, 'fraction', cat)
 		}
 
 	#plotting
