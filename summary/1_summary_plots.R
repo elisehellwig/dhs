@@ -4,7 +4,7 @@ setwd("d:/gdrive/projects/DHS/")
 library(maptools)
 
 
-source('/Users/echellwig/Documents/Research/dhs/functions/plot_functions.R')
+source('/Users/echellwig/Documents/Research/dhs/functions/summary_functions.R')
 
 #loads data
 data(wrld_simpl)
@@ -13,7 +13,16 @@ load('data/aggregated/KR_cluster_cat.RData')
 
 
 plotvarsn <- names(cln[11:length(cln)])
-plotvarsc <- c('v119', 'v459')
+plotvarsc <- c('h11', 'v113', 'v116', 'v119', 'v127', 'v149', 'v459')
+cats <- c('yes last two weeks', 'unprotected', 'no facility', 'yes', 'natural', 'incomplete primary','yes')
+
+#making the categorical variables we want to plot
+clc$h11[,4] <- sapply(1:length(clc$h11[,1]), function(i) sum(clc$h11[i,3], clc$h11[i,4]))
+clc$v116[,6] <- sapply(1:length(clc$v116[,1]), function(i) sum(clc$v116[i,1], clc$v116[i,6]))
+clc$v113[,12] <- sapply(1:length(clc$v113[,1]), function(i) sum(clc$v113[i,12], clc$v113[i,6]))
+attributes(clc$v113)$dimnames[[2]][12] <- 'unprotected'
+
+
 ###########################Africa###########################################
 
 #numeric variables
@@ -25,10 +34,10 @@ for (i in plotvarsn) {
 }
 
 #categorical variables
-for (i in plotvarsc) {
-	ppath <- file.path('/Users','echellwig','Drive','DHS','projects','elise','summaryplots', paste0('africa', i, '.png'))
+for (i in 1:length(plotvarsc)) {
+	ppath <- file.path('/Users','echellwig','Drive','DHS','projects','elise','summaryplots', paste0('africa', plotvarsc[i], '.png'))
 	png(file=ppath, width = 800, height = 800)
-		plotDHS(clc, i, 'AF', cat='yes')
+		plotDHS(clc, plotvarsc[i], 'AF', cat=cats[i])
 	dev.off()
 }
 ###########################Asia###########################################
