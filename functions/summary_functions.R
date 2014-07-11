@@ -110,7 +110,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 
 }
 
-intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon', latitude='lat', cat='not cat', addfit=FALSE) {
+intDHS <- function(df, country, variable, years='all', reso=1/12, longitude='lon', latitude='lat', cat='not cat', addfit=FALSE) {
 	#df is the dataframe where you have all your studd
 	#country is the name of the country you want to interpolate
 	#res is the resolution
@@ -120,6 +120,10 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	require(fields)
 
 	source('/Users/echellwig/Documents/Research/dhs/functions/general.R')
+	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
+	iso <- ctt[ctt$countryname==country,'ISO3']
+
+	pol <- getData('GADM', country=iso, level=0, download=TRUE, path='data/gadm')
 
 	vars <- c('DHScode', 'countryname', 'year', longitude, latitude, variable)
 	d <- df[,vars]
@@ -149,11 +153,12 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 
 	#converts to spatial data frame and gets extent of sampling area
 	sdc <- DHSsp(dc)
-	ext1 <- extent(sdc)
+	ext1 <- floor(extent(pol))
 
 	#creates raster
-	r <- raster(x=ext1, res=reso, crs=CRS("+proj=longlat +ellps=WGS84"))
-	values(r) <- rep(0, ncell(r))
+	r <- raster(res=reso)
+	r <- crop(r, floor(extent(pol)))
+	values(r) <- 1:ncell(r)
 	
 
 	#fits TPS
@@ -172,16 +177,21 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 }
 
 
-plotint <- function(interp, country, variable) {
+plotint <- function(interp, country, variable, lev=0) {
 	require(maptools)
 	data(wrld_simpl)
 
 	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
-
+	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
+	
+	iso <- ctt[ctt$countryname==country,'ISO3']
 	vn <- varcodes[varcodes$varcode==variable,'varname']
 
-	plot(interp, main=paste('Interpolation of', vn, 'in', country))
-	plot(wrld_simpl, add=TRUE)
+	pol <- getData('GADM', country=iso, level=lev, download=TRUE, path='data/gadm')
+
+	z <- mask(interp, pol)
+	plot(z, main=paste('Interpolation of', vn, 'in', country))
+	plot(pol, add=TRUE, lwd=2)
 }
 
 datapoints <- function(df, variable, country) {
