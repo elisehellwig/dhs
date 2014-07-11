@@ -110,7 +110,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 
 }
 
-intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon', latitude='lat', cat=FALSE) {
+intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon', latitude='lat', cat='not cat', addfit=FALSE) {
 	#df is the dataframe where you have all your studd
 	#country is the name of the country you want to interpolate
 	#res is the resolution
@@ -124,29 +124,24 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	vars <- c('DHScode', 'countryname', 'year', longitude, latitude, variable)
 	d <- df[,vars]
 
-
 	#gets the category you want the percentage of if it is a categorical variable
-	if (cat!=FALSE) {
+	if (cat!='not cat') {
 		d[,variable] <- d[,variable][,cat]
 	}
-
 	#gets the country
 	c.rows <- which(d[,'countryname']==country)
 	dc <- d[c.rows,]
-
 
 	if (length(which(complete.cases(dc)))<5) {
 		stop(paste(variable, 'not present for', country))
 		#stop(paste(variable, 'not present for', country))
 	}
 
-
 	#selects years if necessary
 	if (years!='all') {
 		year.rows <- which(dc[,'year']==years)
 		dc <- dc[year.rows,]
 	}
-
 
 	#remove clusters with (0,0) for lat long
 	nonzero.rows <- which(dc[,'lon']!=0)
@@ -156,18 +151,19 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	sdc <- DHSsp(dc)
 	ext1 <- extent(sdc)
 
-
 	#creates raster
-	r <- raster(ext1, res=reso, crs=CRS("+proj=longlat +ellps=WGS84"))
+	r <- raster(x=ext1, res=reso, crs=CRS("+proj=longlat +ellps=WGS84"))
 	values(r) <- rep(0, ncell(r))
 	
+
 	#fits TPS
 	lonlat <- cbind(dc[,longitude], dc[,latitude])
 	fit <- Tps(lonlat, dc[,variable])
 
 	#interpolation
 	interp <- interpolate(r, fit, ext=ext1)
-	if (fit=TRUE) {
+
+	if (addfit==TRUE) {
 		return(fit)
 	} else {
 		return(interp)
