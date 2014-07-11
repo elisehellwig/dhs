@@ -161,11 +161,12 @@ intDHS <- function(df, country, variable, years='all', reso=1/10, longitude='lon
 	fit <- Tps(lonlat, dc[,variable])
 
 	#interpolation
-	interp <- interpolate(r, fit, ext=ext1)
+	
 
 	if (addfit==TRUE) {
 		return(fit)
 	} else {
+		interp <- interpolate(r, fit, ext=ext1)
 		return(interp)
 	}
 }
