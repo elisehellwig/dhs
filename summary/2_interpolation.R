@@ -20,7 +20,7 @@ clc$countryname <- sub("C\xf4te d'Ivoire", 'Cote dIvoire', clc$countryname)
 ################Numeric#############
 #sets up data frame to put interpolations into
 vars <- c("v012", "v115", "v137", "hw4", "hw5", "hw7", "hw8" , "hw10", "hw11", "hw53") 
-
+vars <- c('hw8')
 for (i in 1:length(vars)) {
 	print(vars[i])
 	countries <- unique(cln$countryname)
@@ -29,6 +29,17 @@ for (i in 1:length(vars)) {
 	intlist <- sapply(countries, function(x) intDHS(cln, x, vars[i]))
 	filepath <- paste0('projects/elise/interpolation/', vars[i], 'n.RData')
 	save(intlist, file=filepath)
+}
+
+#saves the fits instead of the interpolation itself
+for (i in 1:length(vars)) {
+	print(vars[i])
+	countries <- unique(cln$countryname)
+	m <- which(sapply(countries, function(x) datapoints(cln, vars[i], x)<=5))
+	countries <- countries[-m]
+	fitlist <- sapply(countries, function(x) intDHS(cln, x, vars[i], addfit=TRUE))
+	filepath <- paste0('projects/elise/interpolation/fits/', vars[i], '.RData')
+	save(fitlist, file=filepath)
 }
 
 
