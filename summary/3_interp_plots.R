@@ -3,11 +3,16 @@ setwd("d:/gdrive/projects/DHS/")
 library(raster)
 library(fields)
 library(maptools)
+library(RColorBrewer)
+library(classInt)
 
 
 source('/Users/echellwig/Documents/Research/dhs/functions/general.R')
 source('/Users/echellwig/Documents/Research/dhs/functions/summary_functions.R')
 data(wrld_simpl)
+
+load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
+load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
 
 ########################Africa##################
 #Variables by Continent
@@ -30,20 +35,13 @@ africahw53 <- intersect(africa, unique(names(intlist)))
 ext1 <- extent(c(-20, 56, -39, 40))
 plot(ext1, main='Hemoglobin levels (g/dL) in Africa')
 for (i in africahw53) {
-	plotintcontinent(intlist[[i]], i, 'hw53', range=c(5,15), breaks=9, rev=TRUE)
+	plotintcontinent(intlist[[i]], i, 'hw53', range=c(7,14), breaks=9, rev=TRUE)
 }
 plot(wrld_simpl, add=TRUE)
 
+load("projects/elise/interpolation/v459.RData")
 
-#v115 time to water
-load("projects/elise/interpolation/v115n.RData")
-africav115 <- intersect(africa, unique(names(intlist)))
-ext1 <- extent(c(-20, 56, -39, 40))
-plot(ext1, main='Time to Water (minutes) in Africa')
-for (i in africav115) {
-	
-}
-plot(wrld_simpl, add=TRUE)
+
 
 
 
