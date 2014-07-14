@@ -15,8 +15,8 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	require(classInt)
 	require(RColorBrewer)
 
-	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
-	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
+	load('projects/elise/data/variablecodes.RData')
+	load('projects/elise/data/cttc.RData')
 
 
 
@@ -119,8 +119,8 @@ intDHS <- function(df, country, variable, years='all', reso=1/12, longitude='lon
 	require(raster)
 	require(fields)
 
-	source('/Users/echellwig/Documents/Research/dhs/functions/general.R')
-	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
+	source('projects/elise/functions/general.R')
+	load('projects/elise/data/cttc.RData')
 	iso <- ctt[ctt$countryname==country,'ISO3']
 
 	pol <- getData('GADM', country=iso, level=0, download=TRUE, path='data/gadm')
@@ -183,8 +183,8 @@ plotint <- function(interp, country, variable, reverse=FALSE, breaks=5, lev=0, w
 	require(classInt)
 	data(wrld_simpl)
 
-	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
-	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
+	load('projects/elise/data/variablecodes.RData')
+	load('projects/elise/data/cttc.RData')
 	
 	iso <- ctt[ctt$countryname==country,'ISO3']
 	vn <- varcodes[varcodes$varcode==variable,'varname']
@@ -209,8 +209,8 @@ plotintcontinent <- function(interp, country, variable, range, reverse=FALSE, br
 	require(classInt)
 	data(wrld_simpl)
 
-	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
-	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
+	load('projects/elise/data/variablecodes.RData')
+	load('projects/elise/data/cttc.RData')
 	
 	iso <- ctt[ctt$countryname==country,'ISO3']
 	vn <- varcodes[varcodes$varcode==variable,'varname']
