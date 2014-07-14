@@ -19,8 +19,8 @@ clc$countryname <- sub("C\xf4te d'Ivoire", 'Cote dIvoire', clc$countryname)
 
 ################Numeric#############
 #sets up data frame to put interpolations into
-vars <- c("v012", "v115", "v137", "hw4", "hw5", "hw7", "hw8" , "hw10", "hw11", "hw53") 
-vars <- c('hw8')
+vars <- c("v012", "v115", "v137", "hw4", "hw5", "hw7", "hw8" , "hw10", "hw11", "hw53")
+
 for (i in 1:length(vars)) {
 	print(vars[i])
 	countries <- unique(cln$countryname)
@@ -48,7 +48,6 @@ for (i in 1:length(vars)) {
 vars2 <- c('h11', 'v113', 'v116', 'v119', 'v127', 'v149', 'v459')
 cats <- c('yes last two weeks', 'piped', 'flush', 'yes', 'natural', 'incomplete primary','yes')
 
-clc$h11[,5] <- rep(0, length(clc$h11[,1]))
 clc$h11[,4] <- sapply(1:length(clc$h11[,1]), function(i) sum(clc$h11[i,3], clc$h11[i,4]))
 
 for (i in 1:length(vars2)) {
