@@ -177,8 +177,10 @@ intDHS <- function(df, country, variable, years='all', reso=1/12, longitude='lon
 }
 
 
-plotint <- function(interp, country, variable, lev=0) {
+plotint <- function(interp, country, variable, reverse=FALSE, breaks=5, lev=0, width=1, colorpalette='YlOrRd') {
 	require(maptools)
+	require(RColorBrewer)
+	require(classInt)
 	data(wrld_simpl)
 
 	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
@@ -189,11 +191,42 @@ plotint <- function(interp, country, variable, lev=0) {
 
 	pol <- getData('GADM', country=iso, level=lev, download=TRUE, path='data/gadm')
 
+	if (reverse==TRUE) {
+		colpal <- rev(brewer.pal(breaks, colorpalette))
+	} else {
+		colpal <- brewer.pal(breaks, colorpalette)
+	}
+
 	z <- mask(interp, pol)
-	plot(z, main=paste('Interpolation of', vn, 'in', country))
-	plot(pol, add=TRUE, lwd=2)
+	plot(z, main=paste('Interpolation of', vn, 'in', country), col=colpal)
+	plot(pol, add=TRUE, lwd=width)
 }
 
+
+plotintcontinent <- function(interp, country, variable, range, reverse=FALSE, breaks=5, lev=0, width=1, colorpalette='YlOrRd') {
+	require(maptools)
+	require(RColorBrewer)
+	require(classInt)
+	data(wrld_simpl)
+
+	load('/Users/echellwig/Documents/Research/dhs/data/variablecodes.RData')
+	load('/Users/echellwig/Documents/Research/dhs/data/cttc.RData')
+	
+	iso <- ctt[ctt$countryname==country,'ISO3']
+	vn <- varcodes[varcodes$varcode==variable,'varname']
+
+	pol <- getData('GADM', country=iso, level=lev, download=TRUE, path='data/gadm')
+
+	if (reverse==TRUE) {
+		colpal <- rev(brewer.pal(breaks, colorpalette))
+	} else {
+		colpal <- brewer.pal(breaks, colorpalette)
+	}
+
+	z <- mask(interp, pol)
+	plot(z, main=paste('Interpolation of', vn, 'in', country), add=TRUE, col=colpal, zlim=range)
+	#plot(pol, add=TRUE, lwd=width)
+}
 datapoints <- function(df, variable, country) {
 	vars <- c('countryname', variable)
 	df <- df[,vars]
