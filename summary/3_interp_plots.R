@@ -70,6 +70,28 @@ for (i in countries) {
 	dev.off()
 }
 
+
+load("projects/elise/interpolation/hw5n.RData")
+countries <- names(intlist)
+for (i in countries) {
+	ipath <- paste0('projects/elise/interpolation/plots/','hw5/', i, '.png')
+	png(file=ipath, width = 800, height = 800)
+		plotint(intlist[i][[1]], i, 'hw5', rev=TRUE, breaks=7)
+	dev.off()
+}
+
+load("projects/elise/interpolation/hw11n.RData")
+countries <- names(intlist)
+for (i in countries) {
+	ipath <- paste0('projects/elise/interpolation/plots/','hw11/', i, '.png')
+	png(file=ipath, width = 800, height = 800)
+		plotint(intlist[i][[1]], i, 'hw11', rev=TRUE, breaks=7)
+	dev.off()
+}
+
+
+
+
 load("projects/elise/interpolation/v115n.RData")
 countries <- names(intlist)
 for (i in countries) {

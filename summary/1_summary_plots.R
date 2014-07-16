@@ -4,7 +4,7 @@ setwd("d:/gdrive/projects/DHS/")
 library(maptools)
 
 
-source('/Users/echellwig/Documents/Research/dhs/functions/summary_functions.R')
+source('/Users/echellwig/Documents/Research/dhs/functions/general.R')
 
 #loads data
 data(wrld_simpl)
