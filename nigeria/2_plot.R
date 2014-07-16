@@ -35,16 +35,22 @@ for (i in yrs) {
 #############Interp Plots############
 ############hw5############
 
-NGint90 <- intDHS(t, 'Nigeria', 'hw5', years=1990)
+hw5ng90 <- intDHS(t, 'Nigeria', 'hw5', years=1990)
+save(hw5ng90, file='projects/elise/interpolation/timeseries/hw5ng90.RData')
+
 NGfit90 <- intDHS(t, 'Nigeria', 'hw5', years=1990, addfit=TRUE)
 
-NGint03 <- intDHS(t, 'Nigeria', 'hw5', years=2003)
+hw5ng03 <- intDHS(t, 'Nigeria', 'hw5', years=2003)
+save(hw5ng03, file='projects/elise/interpolation/timeseries/hw5ng03.RData')
+
 NGfit03 <- intDHS(t, 'Nigeria', 'hw5', years=2003, addfit=TRUE)
 
-NGint08 <- intDHS(t, 'Nigeria', 'hw5', years=2008)
+hw5ng08 <- intDHS(t, 'Nigeria', 'hw5', years=2008)
+save(hw5ng08, file='projects/elise/interpolation/timeseries/hw5ng08.RData')
+
 NGfit08 <- intDHS(t, 'Nigeria', 'hw5', years=2008, addfit=TRUE)
 
-NGints <- c(NGint90, NGint03, NGint08)
+NGints <- c(hw5ng90, hw5ng03, hw5ng08)
 
 par(mfrow=c(1,3))
 for (i in NGints) {
@@ -54,16 +60,22 @@ for (i in NGints) {
 
 ############hw8############
 
-NGint908 <- intDHS(t, 'Nigeria', 'hw8', years=1990)
+hw8ng90 <- intDHS(t, 'Nigeria', 'hw8', years=1990)
+save(hw8ng90, file='projects/elise/interpolation/timeseries/hw8ng90.RData')
+
 NGfit908 <- intDHS(t, 'Nigeria', 'hw8', years=1990, addfit=TRUE)
 
-NGint038 <- intDHS(t, 'Nigeria', 'hw8', years=2003)
+hw8ng03 <- intDHS(t, 'Nigeria', 'hw8', years=2003)
+save(hw8ng03, file='projects/elise/interpolation/timeseries/hw8ng03.RData')
+
 NGfit038 <- intDHS(t, 'Nigeria', 'hw8', years=2003, addfit=TRUE)
 
-NGint088 <- intDHS(t, 'Nigeria', 'hw8', years=2008)
+hw8ng08 <- intDHS(t, 'Nigeria', 'hw8', years=2008)
+save(hw8ng08, file='projects/elise/interpolation/timeseries/hw8ng08.RData')
+
 NGfit088 <- intDHS(t, 'Nigeria', 'hw8', years=2008, addfit=TRUE)
 
-NGints8 <- c(NGint908, NGint038, NGint088)
+NGints8 <- c(hw8ng90, hw8ng03, hw8ng08)
 
 par(mfrow=c(1,3))
 for (i in NGints8) {
@@ -72,20 +84,26 @@ for (i in NGints8) {
 
 ############hw11############
 
-NGint9011 <- intDHS(t, 'Nigeria', 'hw11', years=1990)
+hw11ng90 <- intDHS(t, 'Nigeria', 'hw11', years=1990)
+save(hw11ng90, file='projects/elise/interpolation/timeseries/hw11ng90.RData')
+
 NGfit9011 <- intDHS(t, 'Nigeria', 'hw11', years=1990, addfit=TRUE)
 
-NGint0311 <- intDHS(t, 'Nigeria', 'hw11', years=2003)
+hw11ng03 <- intDHS(t, 'Nigeria', 'hw11', years=2003)
+save(hw11ng03, file='projects/elise/interpolation/timeseries/hw11ng03.RData')
+
 NGfit0311 <- intDHS(t, 'Nigeria', 'hw11', years=2003, addfit=TRUE)
 
-NGint0811 <- intDHS(t, 'Nigeria', 'hw11', years=2008)
+hw11ng08 <- intDHS(t, 'Nigeria', 'hw11', years=2008)
+save(hw11ng08, file='projects/elise/interpolation/timeseries/hw11ng08.RData')
+
 NGfit0811 <- intDHS(t, 'Nigeria', 'hw11', years=2008, addfit=TRUE)
 
-NGints11 <- c(NGint9011, NGint0311, NGint0811)
+NGints11 <- c(hw11ng90, hw11ng03, hw11ng08)
 
 par(mfrow=c(1,3))
 for (i in NGints11) {
-	plotint(i, 'Nigeria', 'hw11', reverse=TRUE, range=c(-3,1), breaks=7)
+	plotint(i, 'Nigeria', 'hw11', reverse=TRUE, range=c(-3,1), breaks=9)
 }
 
 
