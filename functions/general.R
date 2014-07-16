@@ -62,13 +62,16 @@ DHSsp <- function(df, longitude='lon', latitude='lat') {
 	return(spdf)
 }
 
-plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft', cat=FALSE, fit=FALSE) {
+plotDHS <- function(df, variable, region, years='all', country='all', colorpalette='YlOrRd', reverse=FALSE, point_size=0.5, legendlocation='bottomleft', cat=FALSE, fit=FALSE, ws=TRUE, outline=FALSE) {
 	#df <- is the data frame that contains the data that you want to plot
 	#df <- the variable that you want to plot, in quotes
 	#region <- the continent code for the continent you want to plot, or some other code for a region we have yet to come up with (ex Subsaharan Africa, or the Sahel) 
 	#(AF=Africa, AS=Asia, NO=North Amrica, SA=South America, OC=Oceana, EU=Europe
 	#country is country name in quotes
 	#cat <- for categorical variables, the category you want to plot the percent of (ex piped for Drinking water source)
+	#ws = true plots wrld_simpl ontop of map
+	#outline = true plots polygon outline ontop of map
+
 
 	require(sp)
 	require(maptools)
@@ -89,14 +92,14 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	dfc <- df[reg.rows, ]
 	
 	#variable
-	vars <- c('ISO3','contcode','year','v001','lon','lat','alt','URBAN_RURA',variable)
+	vars <- c('ISO3','contcode','year','v001','lon','lat','URBAN_RURA',variable)
 	dfc <- dfc[,vars]	
 
 	#this gets the percent for the category of interest from the data frame 
 	if (cat!=FALSE) {
 		dfc[,variable] <- dfc[,variable][,cat]
 		}
-	#print(str(dfc))
+
 
 	#country
 	if (country=='all') {
@@ -147,7 +150,7 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 	#creating intervals for colors
 	cints <- classIntervals(spdf@data[,variable], style='fixed', fixedBreaks=breaks)
 
-	if (reverse==TRUE) {
+	if (reverse) {
 		colpal <- rev(brewer.pal(5, colorpalette))
 	} else {
 		colpal <- brewer.pal(5, colorpalette)
@@ -168,10 +171,34 @@ plotDHS <- function(df, variable, region, years='all', country='all', colorpalet
 
 	plot(spdf, pch=20, col=colcode, cex=point_size)
 	legend(legendlocation, title=paste(vn, 'in', reg.name), legend=names(attr(colcode, "table")), fill=attr(colcode, "palette"), bty="n") ​
-	plot(wrld_simpl, add=TRUE)
+	if (ws) {
+		plot(wrld_simpl, add=TRUE)
+	}
 ​
+	if (outline) {
+		iso <- ctt[ctt$countryname==country,'ISO3']
+		pol <- getData('GADM', country=iso, level=0, download=TRUE, path='data/gadm')
+		plot(pol, add=TRUE)
+	}
 
 }
+
+r2 <- function(x,y) {
+	#x is the vector of predicted values
+	#y is the vector of actual values
+
+	my <- mean(y)
+	dmy <- (y - my)^2
+	sstot <- sum(dmy) 
+	resid <- y - x
+	ssres <- sum((resid)^2, na.rm=TRUE)
+	r2 <- 1 - (ssres/sstot)
+	return(r2)
+}
+
+
+
+
 
 
 

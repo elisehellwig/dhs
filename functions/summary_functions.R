@@ -1,6 +1,4 @@
 
-
-
 intDHS <- function(df, country, variable, years='all', reso=1/12, longitude='lon', latitude='lat', cat='not cat', addfit=FALSE) {
 	#df is the dataframe where you have all your studd
 	#country is the name of the country you want to interpolate
@@ -10,8 +8,6 @@ intDHS <- function(df, country, variable, years='all', reso=1/12, longitude='lon
 	require(raster)
 	require(fields)
 
-	source('projects/elise/functions/general.R')
-	load('projects/elise/data/cttc.RData')
 	iso <- ctt[ctt$countryname==country,'ISO3']
 
 	pol <- getData('GADM', country=iso, level=0, download=TRUE, path='data/gadm')
@@ -68,7 +64,7 @@ intDHS <- function(df, country, variable, years='all', reso=1/12, longitude='lon
 }
 
 
-plotint <- function(interp, country, variable, reverse=FALSE, breaks=5, lev=0, width=1, colorpalette='YlOrRd') {
+plotint <- function(interp, country, variable, type='Interpolation', reverse=FALSE, breaks=5, lev=0, width=1, colorpalette='YlOrRd', plotpol=FALSE, range=FALSE) {
 	require(maptools)
 	require(RColorBrewer)
 	require(classInt)
@@ -89,8 +85,18 @@ plotint <- function(interp, country, variable, reverse=FALSE, breaks=5, lev=0, w
 	}
 
 	z <- mask(interp, pol)
-	plot(z, main=paste('Interpolation of', vn, 'in', country), col=colpal)
-	plot(pol, add=TRUE, lwd=width)
+
+
+	if (range==FALSE) { 
+		plot(z, main=paste(type, 'of', vn, 'in', country), col=colpal)
+	} else {
+		plot(z, main=paste(type, 'of', vn, 'in', country), col=colpal, zlim=range)
+
+	}
+
+	if (plotpol) {
+		plot(pol, add=TRUE, lwd=width)
+	}
 }
 
 

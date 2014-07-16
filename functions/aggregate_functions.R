@@ -48,14 +48,17 @@ dhsAggregate <- function(d, type="KR",level='national', sex=FALSE, age=FALSE, ag
 		d[,v] <- as.factor(d[,v])
 	}
 
+
 	ac <- aggregate(d[, catvars, drop=F], d[, x,drop=F], function(x) { x <- na.omit(x); table(x) / length(x) })
 
-	
+
 	#merge the variables with gps coordinates etc.
 
 
 	if (level == 'cluster') {
+		print(1)
 		g <- getGPS()
+		print(2)
 		g$year <- as.integer(g$year)
 
 		if (type == "HR"){
@@ -84,7 +87,7 @@ dhsAggregate <- function(d, type="KR",level='national', sex=FALSE, age=FALSE, ag
 
 
 getGPS <- function() { 
-	gpsvars <- c('country', 'year', 'lon', 'lat', 'alt', 'v001', 'URBAN_RURA')
+	gpsvars <- c('country', 'year', 'lon', 'lat', 'v001', 'URBAN_RURA')
 	dta <- loadRData('data/processed/gps.RData')[, gpsvars]
 	colnames(dta)[colnames(dta) == "country"] <- "DHScode" #DHS Country Code
 	return(dta)
