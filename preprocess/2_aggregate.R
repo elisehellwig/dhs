@@ -13,9 +13,8 @@ for (recode in c('KR'#, 'IR', 'HR'
 )) {
 	
 	
-	#d <- try( getDHS(recode) )
+	d <- try( getDHS(recode) )
 	
-	d <- x
 
 	if (class(d) == 'try-error') next
 	

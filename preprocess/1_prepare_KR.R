@@ -2,7 +2,7 @@
 setwd("d:/gdrive/projects/DHS/")
 setwd("/Users/echellwig/Drive/DHS/") #Elise
 source("R/functions/general.R")
-source("/Users/echellwig/Documents/Research/dhs/functions/reclass_functions.R")
+source("projects/elise/functions/reclass_functions.R")
 
 
 #v001 = Cluster number
@@ -76,7 +76,7 @@ for (v in percvars) { #EH 2014/4/18 prepares percentile data
 }
 
 #load mapfile for recoding
-mapfile <- read.csv('projects/erica/mapfile/standard_dhs_map.csv', stringsAsFactors=FALSE)
+mapfile <- read.csv('projects/elise/map.csv', stringsAsFactors=FALSE)
 #converting to UTF-8 encoding
 x$v113<- iconv(x$v113, '', 'UTF-8')
 x$v116<- iconv(x$v116, '', 'UTF-8')
@@ -175,9 +175,6 @@ x <- x[,var]
 cc <- ctryCodeTable()
 
 x <- merge(cc[, c('DHScode', 'ISO3', 'countryname')], x, by='DHScode', all.y=TRUE)
-
-x$ISO3 <- x$ISO3.x
-x$countryname <- x$countryname.x
 
 save(x, file='data/processed/KR_prepared.RData')
 
