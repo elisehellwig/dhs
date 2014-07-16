@@ -177,19 +177,3 @@ cc <- ctryCodeTable()
 x <- merge(cc[, c('DHScode', 'ISO3', 'countryname')], x, by='DHScode', all.y=TRUE)
 
 save(x, file='data/processed/KR_prepared.RData')
-
-
-
-# # #splits into categories (quant, qual)
-# allcol <- c('DHScode', 'ISO3', 'countryname', 'year', 'v001','v002', 'b4')
-# quantcol <- unique(c(allcol, intvars, numvars, percvars))
-# qualcol <- unique(c(allcol, strvars))
-
-# #spliting in up int quantitative data and qualitative data
-# xquant <- x[,quantcol]
-# xqual <- x[,qualcol]
-
-# save(xquant, file='data/processed/KR_prepared_quant.RData')
-# save(xqual, file='data/processed/KR_prepared_qual.RData')
-
-
